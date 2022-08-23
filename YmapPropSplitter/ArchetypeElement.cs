@@ -9,7 +9,7 @@ namespace YmapPropSplitter
 {
     public class ArchetypeElement
     {
-        public List<Archetype> archetypeList { get; set; }
+        public List<MetaHash> archetypeNames { get; set; }
         public string YtypName { get; set; }
     }
 }

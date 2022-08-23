@@ -7,6 +7,7 @@ namespace YmapPropSplitter
 
         public List<ArchetypeElement> YtypArchetypes = new();
         public string[] SelectedYmaps;
+        public string[] SelectedYtyps;
 
         public Form1()
         {
@@ -16,7 +17,6 @@ namespace YmapPropSplitter
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
         {
 
-            YtypArchetypes.Clear();
             FolderBrowserDialog fbw = new();
 
             DialogResult dialog = fbw.ShowDialog();
@@ -28,40 +28,11 @@ namespace YmapPropSplitter
 
                 if (ytypCount > 0)
                 {
-                    string[] selectedYTYPs = Directory.GetFiles(fbw.SelectedPath, "*.ytyp");
+                    SelectedYtyps = Directory.GetFiles(fbw.SelectedPath, "*.ytyp");
 
-                    MessageBox.Show($"{ytypCount} YTYP(s) found!");
+                    lbYTYPstatus.Text = ($"{ytypCount} YTYP(s) found!");
 
-                    ArchetypeElement ae_ = new();
-
-                    foreach (var ytyp in selectedYTYPs)
-                    {
-                        YtypFile ytypFile = new();
-                        ytypFile.Load(File.ReadAllBytes(ytyp));
-
-                        ae_.YtypName = Path.GetFileNameWithoutExtension(ytyp);
-
-                        List<Archetype> newArchList = new();
-
-
-                        foreach (var archs in ytypFile.AllArchetypes)
-                        {
-
-
-                            if (archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef)
-                            {
-                                newArchList.Add(archs);
-                            }
-
-                        }
-
-                        if (newArchList.Count > 0)
-                        {
-                            YtypArchetypes.Add(ae_);
-                        }
-                    }
-
-                    lbYTYPstatus.Text = $"{YtypArchetypes.Sum(x => x.archetypeList.Count)} found in {ytypCount} YTYP(s) file(s)";
+                    
                 }
                 else
                 {
@@ -75,7 +46,6 @@ namespace YmapPropSplitter
 
         private void btnBrowseYMAP_Click(object sender, EventArgs e)
         {
-            btnBrowseYMAP.Enabled = true;
             FolderBrowserDialog fbw = new();
             fbw.ShowDialog();
 
@@ -95,9 +65,6 @@ namespace YmapPropSplitter
             {
                 MessageBox.Show($"No YMAP(s) found!");
             }
-
-
-
         }
 
         private void btnBrowseOutput_Click(object sender, EventArgs e)
@@ -117,8 +84,40 @@ namespace YmapPropSplitter
 
         private void btnSplit_Click(object sender, EventArgs e)
         {
-            if (SelectedYmaps != null && YtypArchetypes.archetypeList.Count != 0 && tbOutput.Text != String.Empty)
+            if (SelectedYmaps != null && SelectedYtyps.Length != 0 && tbOutput.Text != String.Empty)
             {
+
+                //YTYP Processing
+                foreach (var ytyp in SelectedYtyps)
+                {
+                    ArchetypeElement archetypeElement = new();
+                    
+                    YtypFile ytypFile = new();
+                    ytypFile.Load(File.ReadAllBytes(ytyp));
+
+                    archetypeElement.YtypName = Path.GetFileNameWithoutExtension(ytyp);
+
+                    List<MetaHash> metaHashes = new();
+
+                    foreach (var archs in ytypFile.AllArchetypes)
+                    {
+
+
+                        if (archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef)
+                        {
+                            metaHashes.Add(archs.Hash);
+                        }
+                        
+                    }
+
+                    if (metaHashes.Count < 0)
+                    {
+                        archetypeElement.archetypeNames = metaHashes;
+                    }
+
+                }
+                
+                //YMAP Processing
                 foreach (var ymap in SelectedYmaps)
                 {
                     YmapFile ymapFile = new();
@@ -128,48 +127,50 @@ namespace YmapPropSplitter
 
                     List<YmapEntityDef> foundEntities = new();
 
-                    foreach (var ytypThing in Ytyp)
-
+                    foreach (var ytypThing in YtypArchetypes)
+                    {
                         foreach (var archs in ymapFile.AllEntities)
                         {
-                            foreach (var addedArch in YtypArchetypes.archetypeList)
+                            foreach (var addedArch in ytypThing.archetypeNames)
                             {
-                                if (archs._CEntityDef.archetypeName == addedArch._BaseArchetypeDef.name &&
+                                if (archs._CEntityDef.archetypeName == addedArch &&
                                     archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD)
                                 {
                                     foundEntities.Add(archs);
                                     ymapFile.RemoveEntity(archs);
                                 }
-
+                                
                             }
 
 
                         }
+                        
+                        Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
 
-                    Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
+                        byte[] newYmapBytes = ymapFile.Save();
+                        File.WriteAllBytes(Path.Combine(tbOutput.Text, "modified_ymaps") + $"\\{ymapFileName}.ymap", newYmapBytes);
 
-                    byte[] newYmapBytes = ymapFile.Save();
-                    File.WriteAllBytes(Path.Combine(tbOutput.Text, "modified_ymaps") + $"\\{ymapFileName}.ymap", newYmapBytes);
+                        YmapFile SplittedYmap = new()
+                        {
+                            Name = $"{ymapFileName}_{ytypThing.YtypName}"
+                        };
 
-                    YmapFile saitama = new()
-                    {
-                        Name = ymapFileName + "_splitted"
-                    };
+                        foreach (var item in foundEntities)
+                        {
+                            SplittedYmap.AddEntity(item);
+                        }
 
-                    foreach (var item in foundEntities)
-                    {
-                        saitama.AddEntity(item);
+                        if(SplittedYmap.AllEntities != null)
+                        {
+                            SplittedYmap.BuildCEntityDefs();
+                            SplittedYmap.CalcExtents();
+                            SplittedYmap.CalcFlags();
+                            byte[] newYmapBytes2 = SplittedYmap.Save();
+                            File.WriteAllBytes(tbOutput.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
+                        }
+
+                        
                     }
-
-                    saitama.BuildCEntityDefs();
-                    saitama.CalcExtents();
-                    saitama.CalcFlags();
-
-                    byte[] newYmapBytes2 = saitama.Save();
-                    File.WriteAllBytes(tbOutput.Text + $"\\{ymapFileName}_splitted.ymap", newYmapBytes2);
-
-
-
                 }
             }
             else
@@ -178,5 +179,9 @@ namespace YmapPropSplitter
             }
 
         }
+    
+
+         
+    
     }
 }
