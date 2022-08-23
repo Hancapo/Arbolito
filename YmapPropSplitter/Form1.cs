@@ -8,6 +8,7 @@ namespace YmapPropSplitter
         public List<ArchetypeElement> YtypArchetypes = new();
         public string[] SelectedYmaps;
         public string[] SelectedYtyps;
+        public string[] SelectedYmapsToMerge;
 
         public Form1()
         {
@@ -194,9 +195,90 @@ namespace YmapPropSplitter
             }
 
         }
-    
 
-         
+
+        // Ymap merger =>
     
+        private void btnBrowseYmapM_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbw = new();
+
+
+            DialogResult dr = fbw.ShowDialog();
+
+            if(dr == DialogResult.OK)
+            {
+                SelectedYmapsToMerge = Directory.GetFiles(fbw.SelectedPath, "*.ymap");
+
+                tbYmapM.Text = fbw.SelectedPath;
+
+                if (SelectedYmapsToMerge.Length > 0)
+                {
+                    lbYmapMerg.Text = $"{SelectedYmapsToMerge.Length} YMAP(s) found!";
+                }
+                else
+                {
+                    MessageBox.Show($"No YMAP(s) found!");
+                }
+            }
+
+            
+
+        }
+
+        
+
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+
+            YmapFile yfhola = new();
+            yfhola.Name = tbYmapName.Text;
+            
+            if (tbOutputM.Text != String.Empty && tbYmapName.Text != String.Empty)
+            {
+                SelectedYmapsToMerge = Directory.GetFiles(tbYmapM.Text, "*.ymap");
+
+                if(SelectedYmapsToMerge.Length > 0)
+                {
+                    List<YmapEntityDef> AllEntsFromYmaps = new();
+                    foreach (var ymap in SelectedYmapsToMerge)
+                    {
+                        YmapFile ymapFile = new();
+                        ymapFile.Load(File.ReadAllBytes(ymap));
+
+                        ymapFile.AllEntities.ToList().ForEach(x => yfhola.AddEntity(x));
+
+
+
+
+                    }
+                    
+                    yfhola.BuildCEntityDefs();
+                    yfhola.CalcExtents();
+                    yfhola.CalcFlags();
+                    
+                    byte[] mergedYmapBytes = yfhola.Save();
+
+                    File.WriteAllBytes(tbOutputM.Text + $"\\{tbYmapName.Text}.ymap", mergedYmapBytes);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select YMAP files!");
+            }
+        }
+
+        private void btnBrowseOutputM_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbw = new();
+
+
+            DialogResult dr = fbw.ShowDialog();
+
+            tbOutputM.Text = fbw.SelectedPath;
+            
+
+            
+        }
     }
 }

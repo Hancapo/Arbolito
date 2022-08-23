@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnMerge;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -45,9 +46,27 @@
             this.tbYMAP = new System.Windows.Forms.TextBox();
             this.tbYTYP = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbYmapMerg = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbYmapName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnBrowseOutputM = new System.Windows.Forms.Button();
+            this.btnBrowseYmapM = new System.Windows.Forms.Button();
+            this.tbOutputM = new System.Windows.Forms.TextBox();
+            this.tbYmapM = new System.Windows.Forms.TextBox();
+            btnMerge = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnMerge
+            // 
+            resources.ApplyResources(btnMerge, "btnMerge");
+            btnMerge.Name = "btnMerge";
+            btnMerge.UseVisualStyleBackColor = true;
+            btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
             // tabControl1
             // 
@@ -98,6 +117,7 @@
             resources.ApplyResources(this.btnSplit, "btnSplit");
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.UseVisualStyleBackColor = true;
+            this.btnSplit.Click += new System.EventHandler(this.btnSplit_Click);
             // 
             // label3
             // 
@@ -119,18 +139,21 @@
             resources.ApplyResources(this.btnBrowseOutput, "btnBrowseOutput");
             this.btnBrowseOutput.Name = "btnBrowseOutput";
             this.btnBrowseOutput.UseVisualStyleBackColor = true;
+            this.btnBrowseOutput.Click += new System.EventHandler(this.btnBrowseOutput_Click);
             // 
             // btnBrowseYMAP
             // 
             resources.ApplyResources(this.btnBrowseYMAP, "btnBrowseYMAP");
             this.btnBrowseYMAP.Name = "btnBrowseYMAP";
             this.btnBrowseYMAP.UseVisualStyleBackColor = true;
+            this.btnBrowseYMAP.Click += new System.EventHandler(this.btnBrowseYMAP_Click);
             // 
             // btnBrowseYTYP
             // 
             resources.ApplyResources(this.btnBrowseYTYP, "btnBrowseYTYP");
             this.btnBrowseYTYP.Name = "btnBrowseYTYP";
             this.btnBrowseYTYP.UseVisualStyleBackColor = true;
+            this.btnBrowseYTYP.Click += new System.EventHandler(this.btnBrowseYTYP_Click);
             // 
             // tbOutput
             // 
@@ -149,9 +172,69 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbYmapMerg);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.tbYmapName);
+            this.tabPage2.Controls.Add(btnMerge);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.btnBrowseOutputM);
+            this.tabPage2.Controls.Add(this.btnBrowseYmapM);
+            this.tabPage2.Controls.Add(this.tbOutputM);
+            this.tabPage2.Controls.Add(this.tbYmapM);
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lbYmapMerg
+            // 
+            resources.ApplyResources(this.lbYmapMerg, "lbYmapMerg");
+            this.lbYmapMerg.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbYmapMerg.Name = "lbYmapMerg";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // tbYmapName
+            // 
+            resources.ApplyResources(this.tbYmapName, "tbYmapName");
+            this.tbYmapName.Name = "tbYmapName";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // btnBrowseOutputM
+            // 
+            resources.ApplyResources(this.btnBrowseOutputM, "btnBrowseOutputM");
+            this.btnBrowseOutputM.Name = "btnBrowseOutputM";
+            this.btnBrowseOutputM.UseVisualStyleBackColor = true;
+            this.btnBrowseOutputM.Click += new System.EventHandler(this.btnBrowseOutputM_Click);
+            // 
+            // btnBrowseYmapM
+            // 
+            resources.ApplyResources(this.btnBrowseYmapM, "btnBrowseYmapM");
+            this.btnBrowseYmapM.Name = "btnBrowseYmapM";
+            this.btnBrowseYmapM.UseVisualStyleBackColor = true;
+            this.btnBrowseYmapM.Click += new System.EventHandler(this.btnBrowseYmapM_Click);
+            // 
+            // tbOutputM
+            // 
+            resources.ApplyResources(this.tbOutputM, "tbOutputM");
+            this.tbOutputM.Name = "tbOutputM";
+            // 
+            // tbYmapM
+            // 
+            resources.ApplyResources(this.tbYmapM, "tbYmapM");
+            this.tbYmapM.Name = "tbYmapM";
             // 
             // Form1
             // 
@@ -163,6 +246,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -185,5 +270,14 @@
         private TextBox tbYMAP;
         private TextBox tbYTYP;
         private TabPage tabPage2;
+        private Label label6;
+        private TextBox tbYmapName;
+        private Label label4;
+        private Label label5;
+        private Button btnBrowseOutputM;
+        private Button btnBrowseYmapM;
+        private TextBox tbOutputM;
+        private TextBox tbYmapM;
+        private Label lbYmapMerg;
     }
 }
