@@ -147,8 +147,10 @@ namespace YmapPropSplitter
                     byte[] newYmapBytes = ymapFile.Save();
                     File.WriteAllBytes(Path.Combine(tbOutput.Text, "modified_ymaps") + $"\\{ymapFileName}.ymap", newYmapBytes);
 
-                    YmapFile saitama = new();
-                    saitama.Name = ymapFileName + "_modified";
+                    YmapFile saitama = new()
+                    {
+                        Name = ymapFileName + "_splitted"
+                    };
 
                     foreach (var item in foundEntities)
                     {
