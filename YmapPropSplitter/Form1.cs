@@ -130,7 +130,8 @@ namespace YmapPropSplitter
                     {
                         foreach (var addedArch in YtypArchetypes)
                         {
-                            if (archs._CEntityDef.archetypeName == addedArch.archetype._BaseArchetypeDef.name)
+                            if (archs._CEntityDef.archetypeName == addedArch.archetype._BaseArchetypeDef.name && 
+                                archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD)
                             {
                                 foundEntities.Add(archs);
                                 ymapFile.RemoveEntity(archs);
