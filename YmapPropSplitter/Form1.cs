@@ -86,7 +86,8 @@ namespace YmapPropSplitter
         {
             if (SelectedYmaps != null && SelectedYtyps.Length != 0 && tbOutput.Text != String.Empty)
             {
-
+                progressBar1.Value = 0;
+                progressBar1.Maximum = SelectedYmaps.Length * 100;
                 //YTYP Processing
                 foreach (var ytyp in SelectedYtyps)
                 {
@@ -123,6 +124,9 @@ namespace YmapPropSplitter
                 //YMAP Processing
                 foreach (var ymap in SelectedYmaps)
                 {
+                    progressBar1.Value += SelectedYmaps.Length * 100 / 100;
+
+                    
                     YmapFile ymapFile = new();
                     ymapFile.Load(File.ReadAllBytes(ymap));
 
@@ -173,11 +177,13 @@ namespace YmapPropSplitter
                             }
                         }
 
-                        
 
                         
                     }
                 }
+
+                MessageBox.Show("Done!");
+
             }
             else
             {

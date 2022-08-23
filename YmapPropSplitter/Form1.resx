@@ -78,7 +78,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbYTYP.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="tbYMAP.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 108</value>
@@ -99,7 +99,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbYMAP.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="btnBrowseYTYP.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 79</value>
@@ -123,7 +123,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnBrowseYTYP.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btnBrowseYMAP.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 108</value>
@@ -147,7 +147,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnBrowseYMAP.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -174,7 +174,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -201,7 +201,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tbOutput.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 137</value>
@@ -222,7 +222,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbOutput.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btnBrowseOutput.Location" type="System.Drawing.Point, System.Drawing">
     <value>494, 137</value>
@@ -246,7 +246,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnBrowseOutput.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -273,14 +273,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnSplit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnSplit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 238</value>
+    <value>191, 240</value>
   </data>
   <data name="btnSplit.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 23</value>
@@ -301,7 +301,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSplit.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -331,7 +331,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbYTYPstatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,7 +361,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbYTYPstatus.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lbYmap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -391,6 +391,27 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbYmap.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 211</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 23</value>
+  </data>
+  <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
+    <value>progressBar1</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

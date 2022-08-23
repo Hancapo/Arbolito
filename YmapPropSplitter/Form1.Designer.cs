@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lbYTYPstatus = new System.Windows.Forms.Label();
             this.lbYmap = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // tbYTYP
@@ -120,10 +121,16 @@
             this.lbYmap.ForeColor = System.Drawing.Color.IndianRed;
             this.lbYmap.Name = "lbYmap";
             // 
+            // progressBar1
+            // 
+            resources.ApplyResources(this.progressBar1, "progressBar1");
+            this.progressBar1.Name = "progressBar1";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lbYmap);
             this.Controls.Add(this.lbYTYPstatus);
             this.Controls.Add(this.label4);
@@ -159,5 +166,6 @@
         private Label label4;
         private Label lbYTYPstatus;
         private Label lbYmap;
+        private ProgressBar progressBar1;
     }
 }
