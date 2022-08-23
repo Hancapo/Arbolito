@@ -7,7 +7,7 @@ namespace YmapPropSplitter
 
         public List<ArchetypeElement> YtypArchetypes = new();
         public string[] SelectedYmaps;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace YmapPropSplitter
 
             DialogResult dialog = fbw.ShowDialog();
 
-            if(dialog == DialogResult.OK)
+            if (dialog == DialogResult.OK)
             {
                 tbYTYP.Text = fbw.SelectedPath;
                 int ytypCount = Directory.GetFiles(fbw.SelectedPath, "*.ytyp").Length;
@@ -42,11 +42,11 @@ namespace YmapPropSplitter
                         ae_.YtypName = Path.GetFileNameWithoutExtension(ytyp);
 
                         List<Archetype> newArchList = new();
-                        
+
 
                         foreach (var archs in ytypFile.AllArchetypes)
                         {
-                            
+
 
                             if (archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef)
                             {
@@ -70,7 +70,7 @@ namespace YmapPropSplitter
             }
 
 
-            
+
         }
 
         private void btnBrowseYMAP_Click(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace YmapPropSplitter
 
                 lbYmap.Text = $"{ymapCount} YMAP(s) found!";
 
-                
+
             }
             else
             {
@@ -111,8 +111,8 @@ namespace YmapPropSplitter
 
         private void tbYTYP_TextChanged(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         private void btnSplit_Click(object sender, EventArgs e)
@@ -128,23 +128,23 @@ namespace YmapPropSplitter
 
                     List<YmapEntityDef> foundEntities = new();
 
-                    foreach(var ytypThing in Ytyp)
+                    foreach (var ytypThing in Ytyp)
 
-                    foreach (var archs in ymapFile.AllEntities)
-                    {
-                        foreach (var addedArch in YtypArchetypes.archetypeList)
+                        foreach (var archs in ymapFile.AllEntities)
                         {
-                            if (archs._CEntityDef.archetypeName == addedArch._BaseArchetypeDef.name && 
-                                archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD)
+                            foreach (var addedArch in YtypArchetypes.archetypeList)
                             {
-                                foundEntities.Add(archs);
-                                ymapFile.RemoveEntity(archs);
+                                if (archs._CEntityDef.archetypeName == addedArch._BaseArchetypeDef.name &&
+                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD)
+                                {
+                                    foundEntities.Add(archs);
+                                    ymapFile.RemoveEntity(archs);
+                                }
+
                             }
 
+
                         }
-
-
-                    }
 
                     Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
 
@@ -176,7 +176,7 @@ namespace YmapPropSplitter
             {
                 MessageBox.Show("Please select YTYP and YMAP files!");
             }
-            
+
         }
     }
 }
