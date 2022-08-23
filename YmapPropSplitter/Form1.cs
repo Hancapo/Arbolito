@@ -5,7 +5,7 @@ namespace YmapPropSplitter
     public partial class Form1 : Form
     {
 
-        public ArchetypeElement YtypArchetypes = new();
+        public List<ArchetypeElement> YtypArchetypes = new();
         public string[] SelectedYmaps;
         
         public Form1()
@@ -16,7 +16,7 @@ namespace YmapPropSplitter
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
         {
 
-            YtypArchetypes.archetypeList.Clear();
+            YtypArchetypes.Clear();
             FolderBrowserDialog fbw = new();
 
             DialogResult dialog = fbw.ShowDialog();
@@ -32,13 +32,14 @@ namespace YmapPropSplitter
 
                     MessageBox.Show($"{ytypCount} YTYP(s) found!");
 
+                    ArchetypeElement ae_ = new();
+
                     foreach (var ytyp in selectedYTYPs)
                     {
                         YtypFile ytypFile = new();
                         ytypFile.Load(File.ReadAllBytes(ytyp));
 
-                        ArchetypeElement ae = new();
-                        ae.YtypName = Path.GetFileNameWithoutExtension(ytyp);
+                        ae_.YtypName = Path.GetFileNameWithoutExtension(ytyp);
 
                         List<Archetype> newArchList = new();
                         
@@ -56,11 +57,11 @@ namespace YmapPropSplitter
 
                         if (newArchList.Count > 0)
                         {
-                            YtypArchetypes.archetypeList = newArchList;
+                            YtypArchetypes.Add(ae_);
                         }
                     }
 
-                    lbYTYPstatus.Text = $"{YtypArchetypes.archetypeList.Count} found in {ytypCount} YTYP(s) file(s)";
+                    lbYTYPstatus.Text = $"{YtypArchetypes.Sum(x => x.archetypeList.Count)} found in {ytypCount} YTYP(s) file(s)";
                 }
                 else
                 {
@@ -99,8 +100,6 @@ namespace YmapPropSplitter
 
         }
 
-
-
         private void btnBrowseOutput_Click(object sender, EventArgs e)
         {
 
@@ -118,7 +117,7 @@ namespace YmapPropSplitter
 
         private void btnSplit_Click(object sender, EventArgs e)
         {
-            if (SelectedYmaps != null && YtypArchetypes.Count != 0 && tbOutput.Text != String.Empty)
+            if (SelectedYmaps != null && YtypArchetypes.archetypeList.Count != 0 && tbOutput.Text != String.Empty)
             {
                 foreach (var ymap in SelectedYmaps)
                 {
@@ -129,11 +128,13 @@ namespace YmapPropSplitter
 
                     List<YmapEntityDef> foundEntities = new();
 
+                    foreach(var ytypThing in Ytyp)
+
                     foreach (var archs in ymapFile.AllEntities)
                     {
-                        foreach (var addedArch in YtypArchetypes)
+                        foreach (var addedArch in YtypArchetypes.archetypeList)
                         {
-                            if (archs._CEntityDef.archetypeName == addedArch.archetype._BaseArchetypeDef.name && 
+                            if (archs._CEntityDef.archetypeName == addedArch._BaseArchetypeDef.name && 
                                 archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD)
                             {
                                 foundEntities.Add(archs);
