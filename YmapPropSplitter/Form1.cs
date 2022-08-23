@@ -110,10 +110,13 @@ namespace YmapPropSplitter
                         
                     }
 
-                    if (metaHashes.Count < 0)
+                    if (metaHashes.Count > 0)
                     {
                         archetypeElement.archetypeNames = metaHashes;
+                        YtypArchetypes.Add(archetypeElement);
+                        
                     }
+
 
                 }
                 
@@ -125,10 +128,11 @@ namespace YmapPropSplitter
 
                     string ymapFileName = Path.GetFileNameWithoutExtension(ymap);
 
-                    List<YmapEntityDef> foundEntities = new();
 
                     foreach (var ytypThing in YtypArchetypes)
                     {
+                        List<YmapEntityDef> foundEntities = new();
+                        
                         foreach (var archs in ymapFile.AllEntities)
                         {
                             foreach (var addedArch in ytypThing.archetypeNames)
@@ -141,33 +145,35 @@ namespace YmapPropSplitter
                                 }
                                 
                             }
-
-
                         }
                         
                         Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
 
                         byte[] newYmapBytes = ymapFile.Save();
                         File.WriteAllBytes(Path.Combine(tbOutput.Text, "modified_ymaps") + $"\\{ymapFileName}.ymap", newYmapBytes);
-
-                        YmapFile SplittedYmap = new()
+                        if(foundEntities.Count > 0)
                         {
-                            Name = $"{ymapFileName}_{ytypThing.YtypName}"
-                        };
+                            YmapFile SplittedYmap = new()
+                            {
+                                Name = $"{ymapFileName}_{ytypThing.YtypName}"
+                            };
 
-                        foreach (var item in foundEntities)
-                        {
-                            SplittedYmap.AddEntity(item);
+                            foreach (var item in foundEntities)
+                            {
+                                SplittedYmap.AddEntity(item);
+                            }
+
+                            if (SplittedYmap.AllEntities != null)
+                            {
+                                SplittedYmap.BuildCEntityDefs();
+                                SplittedYmap.CalcExtents();
+                                SplittedYmap.CalcFlags();
+                                byte[] newYmapBytes2 = SplittedYmap.Save();
+                                File.WriteAllBytes(tbOutput.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
+                            }
                         }
 
-                        if(SplittedYmap.AllEntities != null)
-                        {
-                            SplittedYmap.BuildCEntityDefs();
-                            SplittedYmap.CalcExtents();
-                            SplittedYmap.CalcFlags();
-                            byte[] newYmapBytes2 = SplittedYmap.Save();
-                            File.WriteAllBytes(tbOutput.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
-                        }
+                        
 
                         
                     }
