@@ -101,6 +101,7 @@
             resources.ApplyResources(this.btnSplit, "btnSplit");
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.UseVisualStyleBackColor = true;
+            this.btnSplit.Click += new System.EventHandler(this.btnSplit_Click);
             // 
             // label4
             // 
