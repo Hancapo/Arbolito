@@ -124,7 +124,8 @@ namespace YmapPropSplitter
                 //YMAP Processing
                 foreach (var ymap in SelectedYmaps)
                 {
-                    progressBar1.Value += SelectedYmaps.Length * 100 / 100;
+                    
+                    progressBar1.Value += 100;
 
                     
                     YmapFile ymapFile = new();
@@ -181,8 +182,10 @@ namespace YmapPropSplitter
                         
                     }
                 }
-
-                MessageBox.Show("Done!");
+                if (progressBar1.Value == progressBar1.Maximum)
+                {
+                    MessageBox.Show($"Processing Complete!");
+                }
 
             }
             else
