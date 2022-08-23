@@ -89,10 +89,25 @@ namespace YmapPropSplitter
                     YmapFile ymapFile = new();
                     ymapFile.Load(File.ReadAllBytes(ymap));
 
+                    string ymapFileName = Path.GetFileNameWithoutExtension(ymap);
+
+                    List<YmapEntityDef> foundEntities = new();
+
                     foreach (var archs in ymapFile.AllEntities)
                     {
+                        foreach (var addedArch in YTYPsArchetypes)
+                        {
+                            if (archs._CEntityDef.archetypeName == addedArch.archetype._BaseArchetypeDef.name)
+                            {
+                                foundEntities.Add(archs);
+                                ymapFile.RemoveEntity(archs);
+                            }
 
+                        }
+                        
                     }
+
+                    
                 }
             }
             else
@@ -103,6 +118,8 @@ namespace YmapPropSplitter
 
 
         }
+
+
 
         private void btnBrowseOutput_Click(object sender, EventArgs e)
         {
