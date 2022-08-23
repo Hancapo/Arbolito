@@ -5,7 +5,7 @@ namespace YmapPropSplitter
     public partial class Form1 : Form
     {
 
-        public List<ArchetypeElement> YtypArchetypes = new();
+        public ArchetypeElement YtypArchetypes = new();
         public string[] SelectedYmaps;
         
         public Form1()
@@ -16,7 +16,7 @@ namespace YmapPropSplitter
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
         {
 
-            YtypArchetypes.Clear();
+            YtypArchetypes.archetypeList.Clear();
             FolderBrowserDialog fbw = new();
 
             DialogResult dialog = fbw.ShowDialog();
@@ -24,10 +24,7 @@ namespace YmapPropSplitter
             if(dialog == DialogResult.OK)
             {
                 tbYTYP.Text = fbw.SelectedPath;
-
-
-
-                int ytypCount = Directory.GetFiles(fbw.SelectedPath, "*.ytyp").Count();
+                int ytypCount = Directory.GetFiles(fbw.SelectedPath, "*.ytyp").Length;
 
                 if (ytypCount > 0)
                 {
@@ -40,24 +37,30 @@ namespace YmapPropSplitter
                         YtypFile ytypFile = new();
                         ytypFile.Load(File.ReadAllBytes(ytyp));
 
+                        ArchetypeElement ae = new();
+                        ae.YtypName = Path.GetFileNameWithoutExtension(ytyp);
+
+                        List<Archetype> newArchList = new();
+                        
+
                         foreach (var archs in ytypFile.AllArchetypes)
                         {
+                            
+
                             if (archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef)
                             {
-                                ArchetypeElement ae = new()
-                                {
-                                    archetype = archs,
-                                    YtypName = Path.GetFileNameWithoutExtension(ytyp)
-                                };
-
-                                YtypArchetypes.Add(ae);
-
+                                newArchList.Add(archs);
                             }
 
                         }
+
+                        if (newArchList.Count > 0)
+                        {
+                            YtypArchetypes.archetypeList = newArchList;
+                        }
                     }
 
-                    lbYTYPstatus.Text = $"{YtypArchetypes.Count} found in {ytypCount} YTYP(s) file(s)";
+                    lbYTYPstatus.Text = $"{YtypArchetypes.archetypeList.Count} found in {ytypCount} YTYP(s) file(s)";
                 }
                 else
                 {
