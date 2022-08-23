@@ -260,6 +260,8 @@ namespace YmapPropSplitter
                     byte[] mergedYmapBytes = yfhola.Save();
 
                     File.WriteAllBytes(tbOutputM.Text + $"\\{tbYmapName.Text}.ymap", mergedYmapBytes);
+
+                    MessageBox.Show($"Merge Complete!");
                 }
             }
             else
