@@ -1,4 +1,5 @@
 using CodeWalker.GameFiles;
+using CodeWalker.World;
 
 namespace YmapPropSplitter
 {
@@ -52,7 +53,7 @@ namespace YmapPropSplitter
 
             tbYMAP.Text = fbw.SelectedPath;
 
-            int ymapCount = Directory.GetFiles(fbw.SelectedPath, "*.ymap").Count();
+            int ymapCount = Directory.GetFiles(fbw.SelectedPath, "*.ymap").Length;
 
             if (ymapCount > 0)
             {
@@ -230,7 +231,7 @@ namespace YmapPropSplitter
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
-
+            
             YmapFile yfhola = new();
             yfhola.Name = tbYmapName.Text;
             
@@ -281,6 +282,11 @@ namespace YmapPropSplitter
             
 
             
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

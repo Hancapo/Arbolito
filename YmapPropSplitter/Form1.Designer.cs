@@ -55,6 +55,7 @@
             this.btnBrowseYmapM = new System.Windows.Forms.Button();
             this.tbOutputM = new System.Windows.Forms.TextBox();
             this.tbYmapM = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             btnMerge = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -72,12 +73,15 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.progressBar1);
             this.tabPage1.Controls.Add(this.lbYmap);
             this.tabPage1.Controls.Add(this.lbYTYPstatus);
@@ -91,9 +95,9 @@
             this.tabPage1.Controls.Add(this.tbOutput);
             this.tabPage1.Controls.Add(this.tbYMAP);
             this.tabPage1.Controls.Add(this.tbYTYP);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.ForeColor = System.Drawing.Color.Cornsilk;
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // progressBar1
             // 
@@ -114,45 +118,61 @@
             // 
             // btnSplit
             // 
+            this.btnSplit.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnSplit.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.btnSplit.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnSplit, "btnSplit");
+            this.btnSplit.ForeColor = System.Drawing.Color.Indigo;
             this.btnSplit.Name = "btnSplit";
-            this.btnSplit.UseVisualStyleBackColor = true;
+            this.btnSplit.UseVisualStyleBackColor = false;
             this.btnSplit.Click += new System.EventHandler(this.btnSplit_Click);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Name = "label2";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Name = "label1";
             // 
             // btnBrowseOutput
             // 
+            this.btnBrowseOutput.BackColor = System.Drawing.Color.LightCoral;
+            this.btnBrowseOutput.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnBrowseOutput, "btnBrowseOutput");
+            this.btnBrowseOutput.ForeColor = System.Drawing.Color.White;
             this.btnBrowseOutput.Name = "btnBrowseOutput";
-            this.btnBrowseOutput.UseVisualStyleBackColor = true;
+            this.btnBrowseOutput.UseVisualStyleBackColor = false;
             this.btnBrowseOutput.Click += new System.EventHandler(this.btnBrowseOutput_Click);
             // 
             // btnBrowseYMAP
             // 
+            this.btnBrowseYMAP.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnBrowseYMAP.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnBrowseYMAP, "btnBrowseYMAP");
             this.btnBrowseYMAP.Name = "btnBrowseYMAP";
-            this.btnBrowseYMAP.UseVisualStyleBackColor = true;
+            this.btnBrowseYMAP.UseVisualStyleBackColor = false;
             this.btnBrowseYMAP.Click += new System.EventHandler(this.btnBrowseYMAP_Click);
             // 
             // btnBrowseYTYP
             // 
+            this.btnBrowseYTYP.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnBrowseYTYP.FlatAppearance.BorderColor = System.Drawing.Color.RosyBrown;
+            this.btnBrowseYTYP.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnBrowseYTYP, "btnBrowseYTYP");
+            this.btnBrowseYTYP.ForeColor = System.Drawing.Color.White;
             this.btnBrowseYTYP.Name = "btnBrowseYTYP";
-            this.btnBrowseYTYP.UseVisualStyleBackColor = true;
+            this.btnBrowseYTYP.UseVisualStyleBackColor = false;
             this.btnBrowseYTYP.Click += new System.EventHandler(this.btnBrowseYTYP_Click);
             // 
             // tbOutput
@@ -236,9 +256,16 @@
             resources.ApplyResources(this.tbYmapM, "tbYmapM");
             this.tbYmapM.Name = "tbYmapM";
             // 
+            // tabPage3
+            // 
+            resources.ApplyResources(this.tabPage3, "tabPage3");
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -280,5 +307,6 @@
         private TextBox tbOutputM;
         private TextBox tbYmapM;
         private Label lbYmapMerg;
+        private TabPage tabPage3;
     }
 }
