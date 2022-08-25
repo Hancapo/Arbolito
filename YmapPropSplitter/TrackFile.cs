@@ -8,27 +8,71 @@ namespace YmapPropSplitter
 {
     public class TrackFile
     {
-        public List<TrackNode> trackNodes = new();
-        public int TrackNodeCount => trackNodes.Count;
+        public List<TrackNode> trackNodes { get; set; }
+        public int trackNodeCount => trackNodes.Count;
 
 
-        List<TrackNode> LoadFile(string filename)
+        public void LoadFile(string filename)
         {
+
+            List<TrackNode> tftn = new();
+            
             string[] tracklines = File.ReadAllLines(filename);
 
             foreach (var item in tracklines)
             {
-                if(item.Split(' ').Length < 0)
+
+                string[] lineSplitted = item.Split(' ');
+
+                if (lineSplitted.Length < 2)
                 {
                     continue;
                 }
 
-                Console.WriteLine(item);
+                TrackNode trackNode = new()
+                {
+                    PosX = double.Parse(lineSplitted[0]),
+                    PosY = double.Parse(lineSplitted[1]),
+                    PosZ = double.Parse(lineSplitted[2]),
+                    Type = int.Parse(lineSplitted[3])
+
+                };
+
+                tftn.Add(trackNode);
+
 
 
             }
 
-            return new List<TrackNode>();
+            trackNodes = tftn;
+
+
+        }
+
+        public void MoveTrackNodes(double x, double y, double z)
+        {
+            foreach (var item in trackNodes)
+            {
+                item.PosX += x;
+                item.PosY += y;
+                item.PosZ += z;
+            }
+        }
+
+        public void SaveFile(string outputfile)
+        {
+            StringBuilder trackFileBuilder = new();
+
+            trackFileBuilder.AppendLine(trackNodeCount.ToString());
+
+            foreach (var item in trackNodes)
+            {
+                trackFileBuilder.AppendLine($"{Math.Round(item.PosX, 4)} {Math.Round(item.PosY, 4)} {Math.Round(item.PosZ, 4)} {item.Type}");
+            }
+
+            File.WriteAllText(outputfile, trackFileBuilder.ToString());
+
+
         }
     }
 }

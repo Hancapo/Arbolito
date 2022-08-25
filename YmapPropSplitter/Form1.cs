@@ -1,5 +1,6 @@
 using CodeWalker.GameFiles;
 using CodeWalker.World;
+using System.Globalization;
 
 namespace YmapPropSplitter
 {
@@ -10,10 +11,13 @@ namespace YmapPropSplitter
         public string[] SelectedYmaps;
         public string[] SelectedYtyps;
         public string[] SelectedYmapsToMerge;
-
+        public string[] SelectedTrainTracks;
         public Form1()
         {
             InitializeComponent();
+            var culture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
         }
 
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
@@ -34,11 +38,11 @@ namespace YmapPropSplitter
 
                     lbYTYPstatus.Text = ($"{ytypCount} YTYP(s) found!");
 
-                    
+
                 }
                 else
                 {
-                    MessageBox.Show($"No YTYP(s) found!");
+                    MessageBox.Show($"No YTYP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
@@ -65,7 +69,7 @@ namespace YmapPropSplitter
             }
             else
             {
-                MessageBox.Show($"No YMAP(s) found!");
+                MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -88,13 +92,11 @@ namespace YmapPropSplitter
         {
             if (SelectedYmaps != null && SelectedYtyps.Length != 0 && tbOutput.Text != String.Empty)
             {
-                progressBar1.Value = 0;
-                progressBar1.Maximum = SelectedYmaps.Length * 100;
                 //YTYP Processing
                 foreach (var ytyp in SelectedYtyps)
                 {
                     ArchetypeElement archetypeElement = new();
-                    
+
                     YtypFile ytypFile = new();
                     ytypFile.Load(File.ReadAllBytes(ytyp));
 
@@ -110,26 +112,22 @@ namespace YmapPropSplitter
                         {
                             metaHashes.Add(archs.Hash);
                         }
-                        
+
                     }
 
                     if (metaHashes.Count > 0)
                     {
                         archetypeElement.archetypeNames = metaHashes;
                         YtypArchetypes.Add(archetypeElement);
-                        
+
                     }
 
 
                 }
-                
+
                 //YMAP Processing
                 foreach (var ymap in SelectedYmaps)
                 {
-                    
-                    progressBar1.Value += 100;
-
-                    
                     YmapFile ymapFile = new();
                     ymapFile.Load(File.ReadAllBytes(ymap));
 
@@ -139,7 +137,7 @@ namespace YmapPropSplitter
                     foreach (var ytypThing in YtypArchetypes)
                     {
                         List<YmapEntityDef> foundEntities = new();
-                        
+
                         foreach (var archs in ymapFile.AllEntities)
                         {
                             foreach (var addedArch in ytypThing.archetypeNames)
@@ -150,15 +148,15 @@ namespace YmapPropSplitter
                                     foundEntities.Add(archs);
                                     ymapFile.RemoveEntity(archs);
                                 }
-                                
+
                             }
                         }
-                        
+
                         Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
 
                         byte[] newYmapBytes = ymapFile.Save();
                         File.WriteAllBytes(Path.Combine(tbOutput.Text, "modified_ymaps") + $"\\{ymapFileName}.ymap", newYmapBytes);
-                        if(foundEntities.Count > 0)
+                        if (foundEntities.Count > 0)
                         {
                             YmapFile SplittedYmap = new()
                             {
@@ -181,25 +179,23 @@ namespace YmapPropSplitter
                         }
 
 
-                        
+
                     }
                 }
-                if (progressBar1.Value == progressBar1.Maximum)
-                {
-                    MessageBox.Show($"Processing Complete!");
-                }
+                MessageBox.Show($"Processing Complete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             }
             else
             {
-                MessageBox.Show("Please select YTYP and YMAP files!");
+                MessageBox.Show("Please select YTYP and YMAP files!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
 
 
         // Ymap merger =>
-    
+
         private void btnBrowseYmapM_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbw = new();
@@ -207,7 +203,7 @@ namespace YmapPropSplitter
 
             DialogResult dr = fbw.ShowDialog();
 
-            if(dr == DialogResult.OK)
+            if (dr == DialogResult.OK)
             {
                 SelectedYmapsToMerge = Directory.GetFiles(fbw.SelectedPath, "*.ymap");
 
@@ -219,27 +215,27 @@ namespace YmapPropSplitter
                 }
                 else
                 {
-                    MessageBox.Show($"No YMAP(s) found!");
+                    MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
-            
+
 
         }
 
-        
+
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
-            
+
             YmapFile yfhola = new();
             yfhola.Name = tbYmapName.Text;
-            
+
             if (tbOutputM.Text != String.Empty && tbYmapName.Text != String.Empty)
             {
                 SelectedYmapsToMerge = Directory.GetFiles(tbYmapM.Text, "*.ymap");
 
-                if(SelectedYmapsToMerge.Length > 0)
+                if (SelectedYmapsToMerge.Length > 0)
                 {
                     List<YmapEntityDef> AllEntsFromYmaps = new();
                     foreach (var ymap in SelectedYmapsToMerge)
@@ -253,21 +249,21 @@ namespace YmapPropSplitter
 
 
                     }
-                    
+
                     yfhola.BuildCEntityDefs();
                     yfhola.CalcExtents();
                     yfhola.CalcFlags();
-                    
+
                     byte[] mergedYmapBytes = yfhola.Save();
 
                     File.WriteAllBytes(tbOutputM.Text + $"\\{tbYmapName.Text}.ymap", mergedYmapBytes);
 
-                    MessageBox.Show($"Merge Complete!");
+                    MessageBox.Show($"Merge Complete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Please select YMAP files!");
+                MessageBox.Show("Please select YMAP files!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -277,16 +273,107 @@ namespace YmapPropSplitter
 
 
             DialogResult dr = fbw.ShowDialog();
+            if (dr == DialogResult.OK) { tbOutputM.Text = fbw.SelectedPath; }
 
-            tbOutputM.Text = fbw.SelectedPath;
-            
 
-            
+
+
+
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
 
+
+
+
+        private void btnMoveTracks_Click(object sender, EventArgs e)
+        {
+            double OffsetX;
+            double OffsetY;
+            double OffsetZ;
+
+            if (tbOutputTracks.Text != string.Empty && tbTrainTracksIn.Text != string.Empty)
+            {
+                if (tbMoveX.Text != string.Empty && tbMoveY.Text != string.Empty && tbMoveZ.Text != string.Empty)
+                {
+                    if (double.TryParse(tbMoveX.Text, out OffsetX) &&
+                       double.TryParse(tbMoveY.Text, out OffsetY) &&
+                       double.TryParse(tbMoveZ.Text, out OffsetZ))
+                    {
+                        if (SelectedTrainTracks.Length > 0)
+                        {
+                            foreach (var trainTrackFile in SelectedTrainTracks)
+                            {
+                                string trainTrackName = Path.GetFileName(trainTrackFile);
+                                TrackFile trackFile = new();
+                                trackFile.LoadFile(trainTrackFile);
+                                trackFile.MoveTrackNodes(OffsetX, OffsetY, OffsetZ);
+                                trackFile.SaveFile(Path.Combine(tbOutputTracks.Text, trainTrackName));
+                            }
+
+                            MessageBox.Show($"{SelectedTrainTracks.Length} Train Track(s) has been moved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
+                    }
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid input and ouput", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void btnTrackOutputBrowse_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbw = new();
+
+
+            DialogResult dr = fbw.ShowDialog();
+            if (dr == DialogResult.OK) { tbOutputTracks.Text = fbw.SelectedPath; }
+
+        }
+
+        private void btnBrowseTracks_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbw = new();
+            fbw.ShowDialog();
+
+            tbTrainTracksIn.Text = fbw.SelectedPath;
+
+            int trainTracksCount = Directory.GetFiles(fbw.SelectedPath, "*.dat").Length;
+
+            if (trainTracksCount > 0)
+            {
+                SelectedTrainTracks = Directory.GetFiles(fbw.SelectedPath, "*.dat");
+
+                lbTrainTrack.Text = $"{trainTracksCount} Train Track(s) found!";
+
+
+            }
+            else
+            {
+                MessageBox.Show($"No Train Track(s) found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tbMoveX_TextChanged(object sender, EventArgs e)
+        {
+            if (!double.TryParse(tbMoveX.Text, out _) || tbMoveX.Text.Contains(',')) { tbMoveX.Text = string.Empty; }
+
+        }
+
+        private void tbMoveY_TextChanged(object sender, EventArgs e)
+        {
+            if (!double.TryParse(tbMoveY.Text, out _) || tbMoveY.Text.Contains(',')) { tbMoveY.Text = string.Empty; }
+        }
+
+        private void tbMoveZ_TextChanged(object sender, EventArgs e)
+        {
+            if (!double.TryParse(tbMoveZ.Text, out _) || tbMoveZ.Text.Contains(',')) { tbMoveZ.Text = string.Empty; }
         }
     }
 }
