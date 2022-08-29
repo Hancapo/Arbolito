@@ -1,3 +1,9 @@
-# YmapPropSplitter
+# Arbolito
 
-A tool to separate entities from YMAP from a group of YTYP and then create new YMAP files with those entities
+A multi-purpose tool for GTA 5, meant to be used with map files.
+
+# Features
+
+* YMAP Splitter (using YTYPs)
+* YMAP Merger
+* Train Tracks mover
