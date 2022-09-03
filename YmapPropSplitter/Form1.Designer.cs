@@ -31,6 +31,7 @@
             System.Windows.Forms.Button btnMerge;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Button btnMoveTracks;
+            System.Windows.Forms.Button btnNavConvert;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lbYmap = new System.Windows.Forms.Label();
@@ -69,12 +70,21 @@
             this.btnBrowseTracks = new System.Windows.Forms.Button();
             this.tbOutputTracks = new System.Windows.Forms.TextBox();
             this.tbTrainTracksIn = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnOnvOutput = new System.Windows.Forms.Button();
+            this.btnYnvInput = new System.Windows.Forms.Button();
+            this.tbOnvOutput = new System.Windows.Forms.TextBox();
+            this.tbYNVs = new System.Windows.Forms.TextBox();
             btnMerge = new System.Windows.Forms.Button();
             btnMoveTracks = new System.Windows.Forms.Button();
+            btnNavConvert = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnMerge
@@ -97,11 +107,22 @@
             btnMoveTracks.UseVisualStyleBackColor = false;
             btnMoveTracks.Click += new System.EventHandler(this.btnMoveTracks_Click);
             // 
+            // btnNavConvert
+            // 
+            btnNavConvert.BackColor = System.Drawing.Color.YellowGreen;
+            btnNavConvert.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(btnNavConvert, "btnNavConvert");
+            btnNavConvert.ForeColor = System.Drawing.Color.White;
+            btnNavConvert.Name = "btnNavConvert";
+            btnNavConvert.UseVisualStyleBackColor = false;
+            btnNavConvert.Click += new System.EventHandler(this.btnNavConvert_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -400,6 +421,61 @@
             resources.ApplyResources(this.tbTrainTracksIn, "tbTrainTracksIn");
             this.tbTrainTracksIn.Name = "tbTrainTracksIn";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage4.Controls.Add(btnNavConvert);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.btnOnvOutput);
+            this.tabPage4.Controls.Add(this.btnYnvInput);
+            this.tabPage4.Controls.Add(this.tbOnvOutput);
+            this.tabPage4.Controls.Add(this.tbYNVs);
+            resources.ApplyResources(this.tabPage4, "tabPage4");
+            this.tabPage4.Name = "tabPage4";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Name = "label10";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Name = "label11";
+            // 
+            // btnOnvOutput
+            // 
+            this.btnOnvOutput.BackColor = System.Drawing.Color.LightCoral;
+            this.btnOnvOutput.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnOnvOutput, "btnOnvOutput");
+            this.btnOnvOutput.ForeColor = System.Drawing.Color.White;
+            this.btnOnvOutput.Name = "btnOnvOutput";
+            this.btnOnvOutput.UseVisualStyleBackColor = false;
+            this.btnOnvOutput.Click += new System.EventHandler(this.btnOnvOutput_Click);
+            // 
+            // btnYnvInput
+            // 
+            this.btnYnvInput.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnYnvInput.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnYnvInput, "btnYnvInput");
+            this.btnYnvInput.ForeColor = System.Drawing.Color.White;
+            this.btnYnvInput.Name = "btnYnvInput";
+            this.btnYnvInput.UseVisualStyleBackColor = false;
+            this.btnYnvInput.Click += new System.EventHandler(this.btnYnvInput_Click);
+            // 
+            // tbOnvOutput
+            // 
+            resources.ApplyResources(this.tbOnvOutput, "tbOnvOutput");
+            this.tbOnvOutput.Name = "tbOnvOutput";
+            // 
+            // tbYNVs
+            // 
+            resources.ApplyResources(this.tbYNVs, "tbYNVs");
+            this.tbYNVs.Name = "tbYNVs";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -416,6 +492,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -460,5 +538,12 @@
         private TextBox tbMoveY;
         private TextBox tbMoveX;
         private Label lbTrainTrack;
+        private TabPage tabPage4;
+        private Label label10;
+        private Label label11;
+        private Button btnOnvOutput;
+        private Button btnYnvInput;
+        private TextBox tbOnvOutput;
+        private TextBox tbYNVs;
     }
 }

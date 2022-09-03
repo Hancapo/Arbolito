@@ -1,5 +1,6 @@
 using CodeWalker.GameFiles;
 using CodeWalker.World;
+using ONV_Exporter;
 using System.Globalization;
 
 namespace YmapPropSplitter
@@ -12,6 +13,7 @@ namespace YmapPropSplitter
         public string[] SelectedYtyps;
         public string[] SelectedYmapsToMerge;
         public string[] SelectedTrainTracks;
+        public string[] YnvFiles;
         public Form1()
         {
             InitializeComponent();
@@ -143,7 +145,8 @@ namespace YmapPropSplitter
                             foreach (var addedArch in ytypThing.archetypeNames)
                             {
                                 if (archs._CEntityDef.archetypeName == addedArch &&
-                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD)
+                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD ||
+                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_HD)
                                 {
                                     foundEntities.Add(archs);
                                     ymapFile.RemoveEntity(archs);
@@ -374,6 +377,76 @@ namespace YmapPropSplitter
         private void tbMoveZ_TextChanged(object sender, EventArgs e)
         {
             if (!double.TryParse(tbMoveZ.Text, out _) || tbMoveZ.Text.Contains(',')) { tbMoveZ.Text = string.Empty; }
+        }
+
+        private void btnYnvInput_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowser = new()
+            {
+                ShowNewFolderButton = false,
+                Description = "Select the input folder"
+            };
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                tbYNVs.Text = folderBrowser.SelectedPath;
+            }
+        }
+        
+        private void btnOnvOutput_Click(object sender, EventArgs e)
+        {
+            //Folder browser for output path
+            FolderBrowserDialog folderBrowser = new()
+            {
+                ShowNewFolderButton = false,
+                Description = "Select the output folder"
+            };
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                tbOnvOutput.Text = folderBrowser.SelectedPath;
+            }
+        }
+
+        private void btnNavConvert_Click(object sender, EventArgs e)
+        {
+
+            if(tbYNVs.Text != String.Empty && tbOnvOutput.Text != String.Empty)
+            {
+                YnvFiles = Directory.GetFiles(tbYNVs.Text, "*.ynv");
+                if (YnvFiles.Length > 0)
+                {
+                    foreach (string YnvFile in YnvFiles)
+                    {
+                        OnvObj onvObj = new();
+
+                        byte[] data = File.ReadAllBytes(YnvFile);
+                        YnvFile ynvFile = new();
+                        ynvFile.Load(data);
+
+                        NavMesh nav = ynvFile.Nav;
+
+                        onvObj.Indices = ynvFile.Indices;
+                        onvObj.Edges = ynvFile.Edges.ConvertAll(new Converter<YnvEdge, OnvObj.OnvEdge>(OnvObj.OnvEdge.YnvToOnvEdge));
+                        onvObj.Polys = ynvFile.Polys.ConvertAll(new Converter<YnvPoly, OnvObj.OnvPoly>(OnvObj.OnvPoly.YnvToOnvPoly));
+                        NavMeshSector sectorTree = nav.SectorTree;
+                        onvObj.SectorTree = new OnvObj.OnvNavTree(sectorTree);
+                        onvObj.Size = nav.AABBSize;
+                        onvObj.Vertices = nav.Vertices.GetFullList();
+                        onvObj.Export($"{tbOnvOutput.Text}/{Path.GetFileNameWithoutExtension(YnvFile)}.onv");
+                    }
+
+                    MessageBox.Show($"All done, {YnvFiles.Length} ynv(s) processed.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No YNV files found in the input folder", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Input or/and Output fields are empty or invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
