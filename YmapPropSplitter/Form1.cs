@@ -1,14 +1,15 @@
 using CodeWalker.GameFiles;
 using CodeWalker.World;
 using ONV_Exporter;
+using System.Collections.Immutable;
 using System.Globalization;
+using System.Linq;
 
 namespace YmapPropSplitter
 {
     public partial class Form1 : Form
     {
 
-        public List<ArchetypeElement> YtypArchetypes = new();
         public string[] SelectedYmaps;
         public string[] SelectedYtyps;
         public string[] SelectedYmapsToMerge;
@@ -17,6 +18,7 @@ namespace YmapPropSplitter
         public Form1()
         {
             InitializeComponent();
+            cbSplitType.SelectedIndex = 0;
             var culture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
@@ -25,28 +27,44 @@ namespace YmapPropSplitter
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
         {
 
-            FolderBrowserDialog fbw = new();
-
-            DialogResult dialog = fbw.ShowDialog();
-
-            if (dialog == DialogResult.OK)
+            if (cbSplitType.SelectedIndex == 0)
             {
-                tbYTYP.Text = fbw.SelectedPath;
-                int ytypCount = Directory.GetFiles(fbw.SelectedPath, "*.ytyp").Length;
+                FolderBrowserDialog fbw = new();
 
-                if (ytypCount > 0)
+                DialogResult dialog = fbw.ShowDialog();
+
+                if (dialog == DialogResult.OK)
                 {
-                    SelectedYtyps = Directory.GetFiles(fbw.SelectedPath, "*.ytyp");
+                    tbYTYP.Text = fbw.SelectedPath;
+                    int ytypCount = Directory.GetFiles(fbw.SelectedPath, "*.ytyp").Length;
 
-                    lbYTYPstatus.Text = ($"{ytypCount} YTYP(s) found!");
+                    if (ytypCount > 0)
+                    {
+                        SelectedYtyps = Directory.GetFiles(fbw.SelectedPath, "*.ytyp");
+
+                        lbYTYPstatus.Text = ($"{ytypCount} YTYP(s) found!");
 
 
-                }
-                else
-                {
-                    MessageBox.Show($"No YTYP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No YTYP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
+            else
+            {
+                OpenFileDialog openFileDialog = new();
+
+                DialogResult dialog = openFileDialog.ShowDialog();
+
+                if(dialog == DialogResult.OK)
+                {
+                    tbYTYP.Text = openFileDialog.FileName;
+                }
+            }
+
+            
 
 
 
@@ -55,24 +73,31 @@ namespace YmapPropSplitter
         private void btnBrowseYMAP_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbw = new();
-            fbw.ShowDialog();
 
-            tbYMAP.Text = fbw.SelectedPath;
+            DialogResult dialogResult = fbw.ShowDialog();
 
-            int ymapCount = Directory.GetFiles(fbw.SelectedPath, "*.ymap").Length;
-
-            if (ymapCount > 0)
+            if(dialogResult == DialogResult.OK)
             {
-                SelectedYmaps = Directory.GetFiles(fbw.SelectedPath, "*.ymap");
+                tbYMAP.Text = fbw.SelectedPath;
 
-                lbYmap.Text = $"{ymapCount} YMAP(s) found!";
+                int ymapCount = Directory.GetFiles(fbw.SelectedPath, "*.ymap").Length;
+
+                if (ymapCount > 0)
+                {
+                    SelectedYmaps = Directory.GetFiles(fbw.SelectedPath, "*.ymap");
+
+                    lbYmap.Text = $"{ymapCount} YMAP(s) found!";
 
 
+                }
+                else
+                {
+                    MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
-            {
-                MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
+
+            
         }
 
         private void btnBrowseOutput_Click(object sender, EventArgs e)
@@ -92,40 +117,10 @@ namespace YmapPropSplitter
 
         private void btnSplit_Click(object sender, EventArgs e)
         {
-            if (SelectedYmaps != null && SelectedYtyps.Length != 0 && tbOutput.Text != String.Empty)
+            if (SelectedYmaps != null && tbOutput.Text != String.Empty)
             {
-                //YTYP Processing
-                foreach (var ytyp in SelectedYtyps)
-                {
-                    ArchetypeElement archetypeElement = new();
+                List<ArchetypeElement> YtypArchetypesNames = new();
 
-                    YtypFile ytypFile = new();
-                    ytypFile.Load(File.ReadAllBytes(ytyp));
-
-                    archetypeElement.YtypName = Path.GetFileNameWithoutExtension(ytyp);
-
-                    List<MetaHash> metaHashes = new();
-
-                    foreach (var archs in ytypFile.AllArchetypes)
-                    {
-
-
-                        if (archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef)
-                        {
-                            metaHashes.Add(archs.Hash);
-                        }
-
-                    }
-
-                    if (metaHashes.Count > 0)
-                    {
-                        archetypeElement.archetypeNames = metaHashes;
-                        YtypArchetypes.Add(archetypeElement);
-
-                    }
-
-
-                }
 
                 //YMAP Processing
                 foreach (var ymap in SelectedYmaps)
@@ -136,7 +131,18 @@ namespace YmapPropSplitter
                     string ymapFileName = Path.GetFileNameWithoutExtension(ymap);
 
 
-                    foreach (var ytypThing in YtypArchetypes)
+                    if (cbSplitType.SelectedIndex == 0)
+                    {
+                        YtypArchetypesNames = GetArchetypeElementList(SelectedYtyps);
+                    }
+                    else
+                    {
+                        YtypArchetypesNames = GetArchetypeElementList(tbYTYP.Text);
+
+                    }
+
+
+                    foreach (var ytypThing in YtypArchetypesNames)
                     {
                         List<YmapEntityDef> foundEntities = new();
 
@@ -145,8 +151,8 @@ namespace YmapPropSplitter
                             foreach (var addedArch in ytypThing.archetypeNames)
                             {
                                 if (archs._CEntityDef.archetypeName == addedArch &&
-                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD ||
-                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_HD)
+                                    (archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD ||
+                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_HD))
                                 {
                                     foundEntities.Add(archs);
                                     ymapFile.RemoveEntity(archs);
@@ -343,24 +349,31 @@ namespace YmapPropSplitter
         private void btnBrowseTracks_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbw = new();
-            fbw.ShowDialog();
 
-            tbTrainTracksIn.Text = fbw.SelectedPath;
+            DialogResult dialogResult = fbw.ShowDialog();
 
-            int trainTracksCount = Directory.GetFiles(fbw.SelectedPath, "*.dat").Length;
 
-            if (trainTracksCount > 0)
+            if (dialogResult == DialogResult.OK)
             {
-                SelectedTrainTracks = Directory.GetFiles(fbw.SelectedPath, "*.dat");
+                tbTrainTracksIn.Text = fbw.SelectedPath;
 
-                lbTrainTrack.Text = $"{trainTracksCount} Train Track(s) found!";
+                int trainTracksCount = Directory.GetFiles(fbw.SelectedPath, "*.dat").Length;
+
+                if (trainTracksCount > 0)
+                {
+                    SelectedTrainTracks = Directory.GetFiles(fbw.SelectedPath, "*.dat");
+
+                    lbTrainTrack.Text = $"{trainTracksCount} Train Track(s) found!";
 
 
+                }
+                else
+                {
+                    MessageBox.Show($"No Train Track(s) found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show($"No Train Track(s) found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            
         }
 
         private void tbMoveX_TextChanged(object sender, EventArgs e)
@@ -446,6 +459,74 @@ namespace YmapPropSplitter
             else
             {
                 MessageBox.Show("Input or/and Output fields are empty or invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    
+        private List<ArchetypeElement> GetArchetypeElementList(string[] ytypsFiles)
+        {
+            List<ArchetypeElement> ArchetypesNames = new();
+
+            foreach (var ytyp in ytypsFiles)
+            {
+                ArchetypeElement archetypeElement = new();
+
+                YtypFile ytypFile = new();
+                ytypFile.Load(File.ReadAllBytes(ytyp));
+
+                archetypeElement.YtypName = Path.GetFileNameWithoutExtension(ytyp);
+
+                List<MetaHash> metaHashes = new();
+
+                foreach (var archs in ytypFile.AllArchetypes)
+                {
+
+
+                    if (archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef)
+                    {
+                        metaHashes.Add(archs.Hash);
+                    }
+
+                }
+
+                if (metaHashes.Count > 0)
+                {
+                    archetypeElement.archetypeNames = metaHashes;
+                    ArchetypesNames.Add(archetypeElement);
+
+                }
+
+
+            }
+
+            return ArchetypesNames;
+        }
+
+        private List<ArchetypeElement> GetArchetypeElementList(string textFile)
+        {
+            List<ArchetypeElement> ArchetypesNames = new();
+            ArchetypeElement archetypeElement = new();
+            List<MetaHash> fileElements = new();
+
+            foreach (var item in File.ReadAllLines(textFile))
+            {
+                fileElements.Add(JenkHash.GenHash(item));
+            }
+
+            archetypeElement.archetypeNames = fileElements;
+            archetypeElement.YtypName = Path.GetFileNameWithoutExtension(textFile);
+            ArchetypesNames.Add(archetypeElement);
+            return ArchetypesNames;
+        }
+
+        private void cbSplitType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbSplitType.SelectedIndex == 0)
+            {
+                label1.Text = "YTYP folder";
+            }
+            else
+            {
+                label1.Text = "Text file";
             }
         }
     }

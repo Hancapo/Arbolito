@@ -34,6 +34,8 @@
             System.Windows.Forms.Button btnNavConvert;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbSplitType = new System.Windows.Forms.ComboBox();
             this.lbYmap = new System.Windows.Forms.Label();
             this.lbYTYPstatus = new System.Windows.Forms.Label();
             this.btnSplit = new System.Windows.Forms.Button();
@@ -132,6 +134,8 @@
             this.tabPage1.BackColor = System.Drawing.SystemColors.WindowFrame;
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.cbSplitType);
             this.tabPage1.Controls.Add(this.lbYmap);
             this.tabPage1.Controls.Add(this.lbYTYPstatus);
             this.tabPage1.Controls.Add(this.btnSplit);
@@ -146,6 +150,22 @@
             this.tabPage1.Controls.Add(this.tbYTYP);
             this.tabPage1.ForeColor = System.Drawing.Color.YellowGreen;
             this.tabPage1.Name = "tabPage1";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // cbSplitType
+            // 
+            this.cbSplitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSplitType.FormattingEnabled = true;
+            this.cbSplitType.Items.AddRange(new object[] {
+            resources.GetString("cbSplitType.Items"),
+            resources.GetString("cbSplitType.Items1")});
+            resources.ApplyResources(this.cbSplitType, "cbSplitType");
+            this.cbSplitType.Name = "cbSplitType";
+            this.cbSplitType.SelectedIndexChanged += new System.EventHandler(this.cbSplitType_SelectedIndexChanged);
             // 
             // lbYmap
             // 
@@ -545,5 +565,7 @@
         private Button btnYnvInput;
         private TextBox tbOnvOutput;
         private TextBox tbYNVs;
+        private ComboBox cbSplitType;
+        private Label label9;
     }
 }
