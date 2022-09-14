@@ -146,21 +146,27 @@ namespace YmapPropSplitter
                     {
                         List<YmapEntityDef> foundEntities = new();
 
-                        foreach (var archs in ymapFile.AllEntities)
+                        if (ymapFile.AllEntities != null && (ymapFile.AllEntities != null || ymapFile.CarGenerators == null))
                         {
-                            foreach (var addedArch in ytypThing.archetypeNames)
+                            foreach (var archs in ymapFile.AllEntities)
                             {
-                                if (archs._CEntityDef.archetypeName == addedArch &&
-                                    (archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD ||
-                                    archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_HD))
+
+
+                                foreach (var addedArch in ytypThing.archetypeNames)
                                 {
-                                    foundEntities.Add(archs);
-                                    ymapFile.RemoveEntity(archs);
+                                    if (archs._CEntityDef.archetypeName == addedArch &&
+                                        (archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD ||
+                                        archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_HD))
+                                    {
+                                        foundEntities.Add(archs);
+                                        ymapFile.RemoveEntity(archs);
+                                    }
+
                                 }
+
 
                             }
                         }
-
                         Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
 
                         byte[] newYmapBytes = ymapFile.Save();
@@ -182,6 +188,7 @@ namespace YmapPropSplitter
                                 SplittedYmap.BuildCEntityDefs();
                                 SplittedYmap.CalcExtents();
                                 SplittedYmap.CalcFlags();
+                                SplittedYmap.BuildCCarGens();
                                 byte[] newYmapBytes2 = SplittedYmap.Save();
                                 File.WriteAllBytes(tbOutput.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
                             }
@@ -247,21 +254,39 @@ namespace YmapPropSplitter
                 if (SelectedYmapsToMerge.Length > 0)
                 {
                     List<YmapEntityDef> AllEntsFromYmaps = new();
+                    List<YmapCarGen> AllCarGenFromYmaps = new();
                     foreach (var ymap in SelectedYmapsToMerge)
                     {
                         YmapFile ymapFile = new();
                         ymapFile.Load(File.ReadAllBytes(ymap));
 
-                        ymapFile.AllEntities.ToList().ForEach(x => yfhola.AddEntity(x));
+                        if(ymapFile.AllEntities != null && ymapFile.CarGenerators != null)
+                        {
+                            if (ymapFile.AllEntities != null)
+                            {
+                                AllEntsFromYmaps.AddRange(ymapFile.AllEntities);
 
+                            }
+
+                            if (ymapFile.CarGenerators != null)
+                            {
+                                AllCarGenFromYmaps.AddRange(ymapFile.CarGenerators);
+                            }
+                        }
+
+
+                        continue;
 
 
 
                     }
-
+                    yfhola.AllEntities = AllEntsFromYmaps.ToArray();
+                    yfhola.CarGenerators = AllCarGenFromYmaps.ToArray();
                     yfhola.BuildCEntityDefs();
                     yfhola.CalcExtents();
                     yfhola.CalcFlags();
+                    yfhola.BuildCCarGens();
+
 
                     byte[] mergedYmapBytes = yfhola.Save();
 
