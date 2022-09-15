@@ -79,6 +79,29 @@
             this.btnYnvInput = new System.Windows.Forms.Button();
             this.tbOnvOutput = new System.Windows.Forms.TextBox();
             this.tbYNVs = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.grupoCja = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnOutputReplace = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.tbYmapOutputReplace = new System.Windows.Forms.TextBox();
+            this.tbYmapReplace = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClearPropList = new System.Windows.Forms.Button();
+            this.btnProcessPropList = new System.Windows.Forms.Button();
+            this.dgvPropReplaceList = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnResetPropSet = new System.Windows.Forms.Button();
+            this.btnAddPropReplacing = new System.Windows.Forms.Button();
+            this.label14d = new System.Windows.Forms.Label();
+            this.nudZ = new System.Windows.Forms.NumericUpDown();
+            this.nudY = new System.Windows.Forms.NumericUpDown();
+            this.nudX = new System.Windows.Forms.NumericUpDown();
+            this.tbPropTo = new System.Windows.Forms.TextBox();
+            this.tbPropFrom = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             btnMerge = new System.Windows.Forms.Button();
             btnMoveTracks = new System.Windows.Forms.Button();
             btnNavConvert = new System.Windows.Forms.Button();
@@ -87,6 +110,14 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.grupoCja.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMerge
@@ -121,11 +152,12 @@
             // 
             // tabControl1
             // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
@@ -496,6 +528,232 @@
             resources.ApplyResources(this.tbYNVs, "tbYNVs");
             this.tbYNVs.Name = "tbYNVs";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage5.Controls.Add(this.grupoCja);
+            this.tabPage5.Controls.Add(this.groupBox2);
+            this.tabPage5.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.tabPage5, "tabPage5");
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
+            // 
+            // grupoCja
+            // 
+            this.grupoCja.Controls.Add(this.label14);
+            this.grupoCja.Controls.Add(this.label15);
+            this.grupoCja.Controls.Add(this.btnOutputReplace);
+            this.grupoCja.Controls.Add(this.button7);
+            this.grupoCja.Controls.Add(this.tbYmapOutputReplace);
+            this.grupoCja.Controls.Add(this.tbYmapReplace);
+            this.grupoCja.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.grupoCja, "grupoCja");
+            this.grupoCja.Name = "grupoCja";
+            this.grupoCja.TabStop = false;
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Name = "label14";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Name = "label15";
+            // 
+            // btnOutputReplace
+            // 
+            this.btnOutputReplace.BackColor = System.Drawing.Color.LightCoral;
+            this.btnOutputReplace.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnOutputReplace, "btnOutputReplace");
+            this.btnOutputReplace.ForeColor = System.Drawing.Color.White;
+            this.btnOutputReplace.Name = "btnOutputReplace";
+            this.btnOutputReplace.UseVisualStyleBackColor = false;
+            this.btnOutputReplace.Click += new System.EventHandler(this.btnOutputReplace_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.ForestGreen;
+            this.button7.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.btnYmapReplace_Click);
+            // 
+            // tbYmapOutputReplace
+            // 
+            resources.ApplyResources(this.tbYmapOutputReplace, "tbYmapOutputReplace");
+            this.tbYmapOutputReplace.Name = "tbYmapOutputReplace";
+            // 
+            // tbYmapReplace
+            // 
+            resources.ApplyResources(this.tbYmapReplace, "tbYmapReplace");
+            this.tbYmapReplace.Name = "tbYmapReplace";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnClearPropList);
+            this.groupBox2.Controls.Add(this.btnProcessPropList);
+            this.groupBox2.Controls.Add(this.dgvPropReplaceList);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // btnClearPropList
+            // 
+            this.btnClearPropList.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnClearPropList, "btnClearPropList");
+            this.btnClearPropList.Name = "btnClearPropList";
+            this.btnClearPropList.UseVisualStyleBackColor = true;
+            // 
+            // btnProcessPropList
+            // 
+            this.btnProcessPropList.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnProcessPropList, "btnProcessPropList");
+            this.btnProcessPropList.Name = "btnProcessPropList";
+            this.btnProcessPropList.UseVisualStyleBackColor = true;
+            // 
+            // dgvPropReplaceList
+            // 
+            this.dgvPropReplaceList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPropReplaceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPropReplaceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvPropReplaceList, "dgvPropReplaceList");
+            this.dgvPropReplaceList.Name = "dgvPropReplaceList";
+            this.dgvPropReplaceList.ReadOnly = true;
+            this.dgvPropReplaceList.RowTemplate.Height = 25;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnResetPropSet);
+            this.groupBox1.Controls.Add(this.btnAddPropReplacing);
+            this.groupBox1.Controls.Add(this.label14d);
+            this.groupBox1.Controls.Add(this.nudZ);
+            this.groupBox1.Controls.Add(this.nudY);
+            this.groupBox1.Controls.Add(this.nudX);
+            this.groupBox1.Controls.Add(this.tbPropTo);
+            this.groupBox1.Controls.Add(this.tbPropFrom);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // btnResetPropSet
+            // 
+            this.btnResetPropSet.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnResetPropSet, "btnResetPropSet");
+            this.btnResetPropSet.Name = "btnResetPropSet";
+            this.btnResetPropSet.UseVisualStyleBackColor = true;
+            this.btnResetPropSet.Click += new System.EventHandler(this.btnResetPropSet_Click);
+            // 
+            // btnAddPropReplacing
+            // 
+            this.btnAddPropReplacing.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnAddPropReplacing, "btnAddPropReplacing");
+            this.btnAddPropReplacing.Name = "btnAddPropReplacing";
+            this.btnAddPropReplacing.UseVisualStyleBackColor = true;
+            this.btnAddPropReplacing.Click += new System.EventHandler(this.btnAddPropReplacing_Click);
+            // 
+            // label14d
+            // 
+            resources.ApplyResources(this.label14d, "label14d");
+            this.label14d.Name = "label14d";
+            // 
+            // nudZ
+            // 
+            this.nudZ.BackColor = System.Drawing.Color.SteelBlue;
+            this.nudZ.DecimalPlaces = 3;
+            this.nudZ.ForeColor = System.Drawing.SystemColors.Window;
+            this.nudZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.nudZ, "nudZ");
+            this.nudZ.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudZ.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudZ.Name = "nudZ";
+            // 
+            // nudY
+            // 
+            this.nudY.BackColor = System.Drawing.Color.OliveDrab;
+            this.nudY.DecimalPlaces = 3;
+            this.nudY.ForeColor = System.Drawing.SystemColors.Window;
+            this.nudY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.nudY, "nudY");
+            this.nudY.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudY.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudY.Name = "nudY";
+            // 
+            // nudX
+            // 
+            this.nudX.BackColor = System.Drawing.Color.IndianRed;
+            this.nudX.DecimalPlaces = 3;
+            this.nudX.ForeColor = System.Drawing.SystemColors.Window;
+            this.nudX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.nudX, "nudX");
+            this.nudX.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudX.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudX.Name = "nudX";
+            // 
+            // tbPropTo
+            // 
+            resources.ApplyResources(this.tbPropTo, "tbPropTo");
+            this.tbPropTo.Name = "tbPropTo";
+            // 
+            // tbPropFrom
+            // 
+            resources.ApplyResources(this.tbPropFrom, "tbPropFrom");
+            this.tbPropFrom.Name = "tbPropFrom";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -514,6 +772,16 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.grupoCja.ResumeLayout(false);
+            this.grupoCja.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,5 +835,28 @@
         private TextBox tbYNVs;
         private ComboBox cbSplitType;
         private Label label9;
+        private TabPage tabPage5;
+        private GroupBox groupBox2;
+        private DataGridView dgvPropReplaceList;
+        private GroupBox groupBox1;
+        private NumericUpDown nudX;
+        private TextBox tbPropFrom;
+        private Label label13;
+        private Label label12;
+        private NumericUpDown nudZ;
+        private NumericUpDown nudY;
+        private Button btnResetPropSet;
+        private Button btnAddPropReplacing;
+        private Label label14d;
+        private TextBox tbPropTo;
+        private GroupBox grupoCja;
+        private Label label14;
+        private Label label15;
+        private Button btnOutputReplace;
+        private Button button7;
+        private TextBox tbYmapOutputReplace;
+        private TextBox tbYmapReplace;
+        private Button btnClearPropList;
+        private Button btnProcessPropList;
     }
 }

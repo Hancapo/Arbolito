@@ -1,3 +1,4 @@
+using Arbolito;
 using CodeWalker.GameFiles;
 using CodeWalker.World;
 using ONV_Exporter;
@@ -13,8 +14,10 @@ namespace YmapPropSplitter
         public string[] SelectedYmaps;
         public string[] SelectedYtyps;
         public string[] SelectedYmapsToMerge;
+        public string[] SelectedYmapsToReplaceProps;
         public string[] SelectedTrainTracks;
         public string[] YnvFiles;
+        public List<PropReplacer> propReplacers = new();
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +25,9 @@ namespace YmapPropSplitter
             var culture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
+            dgvPropReplaceList.ForeColor = Color.Black;
+
+
         }
 
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
@@ -58,13 +64,13 @@ namespace YmapPropSplitter
 
                 DialogResult dialog = openFileDialog.ShowDialog();
 
-                if(dialog == DialogResult.OK)
+                if (dialog == DialogResult.OK)
                 {
                     tbYTYP.Text = openFileDialog.FileName;
                 }
             }
 
-            
+
 
 
 
@@ -76,7 +82,7 @@ namespace YmapPropSplitter
 
             DialogResult dialogResult = fbw.ShowDialog();
 
-            if(dialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.OK)
             {
                 tbYMAP.Text = fbw.SelectedPath;
 
@@ -97,7 +103,7 @@ namespace YmapPropSplitter
             }
 
 
-            
+
         }
 
         private void btnBrowseOutput_Click(object sender, EventArgs e)
@@ -262,7 +268,7 @@ namespace YmapPropSplitter
                         YmapFile ymapFile = new();
                         ymapFile.Load(File.ReadAllBytes(ymap));
 
-                        if(ymapFile.AllEntities != null || ymapFile.CarGenerators != null)
+                        if (ymapFile.AllEntities != null || ymapFile.CarGenerators != null)
                         {
                             if (ymapFile.AllEntities != null)
                             {
@@ -401,7 +407,7 @@ namespace YmapPropSplitter
                 }
             }
 
-            
+
         }
 
         private void tbMoveX_TextChanged(object sender, EventArgs e)
@@ -432,7 +438,7 @@ namespace YmapPropSplitter
                 tbYNVs.Text = folderBrowser.SelectedPath;
             }
         }
-        
+
         private void btnOnvOutput_Click(object sender, EventArgs e)
         {
             //Folder browser for output path
@@ -450,7 +456,7 @@ namespace YmapPropSplitter
         private void btnNavConvert_Click(object sender, EventArgs e)
         {
 
-            if(tbYNVs.Text != String.Empty && tbOnvOutput.Text != String.Empty)
+            if (tbYNVs.Text != String.Empty && tbOnvOutput.Text != String.Empty)
             {
                 YnvFiles = Directory.GetFiles(tbYNVs.Text, "*.ynv");
                 if (YnvFiles.Length > 0)
@@ -489,7 +495,7 @@ namespace YmapPropSplitter
                 MessageBox.Show("Input or/and Output fields are empty or invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
+
         private List<ArchetypeElement> GetArchetypeElementList(string[] ytypsFiles)
         {
             List<ArchetypeElement> ArchetypesNames = new();
@@ -548,7 +554,7 @@ namespace YmapPropSplitter
 
         private void cbSplitType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbSplitType.SelectedIndex == 0)
+            if (cbSplitType.SelectedIndex == 0)
             {
                 label1.Text = "YTYP folder";
             }
@@ -556,6 +562,121 @@ namespace YmapPropSplitter
             {
                 label1.Text = "Text file";
             }
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnResetPropSet_Click(object sender, EventArgs e)
+        {
+            ClearPropReplacerControls();
+        }
+
+        private void ClearPropReplacerControls()
+        {
+            tbPropFrom.Text = String.Empty;
+            tbPropTo.Text = String.Empty;
+            nudX.Value = 0;
+            nudY.Value = 0;
+            nudZ.Value = 0;
+        }
+
+        public bool PropReplaceValidateControls()
+        {
+            if (!string.IsNullOrEmpty(tbPropFrom.Text) && !string.IsNullOrEmpty(tbPropTo.Text))
+            {
+                return true;
+            }
+
+            return false;
+
+        }
+
+        private void btnAddPropReplacing_Click(object sender, EventArgs e)
+        {
+            if (PropReplaceValidateControls())
+            {
+                PropReplacer rp = new()
+                {
+                    FromPropStr = tbPropFrom.Text,
+                    ToPropStr = tbPropTo.Text,
+                    RotationOffset = new SharpDX.Vector3(
+                        Convert.ToSingle(nudX.Value),
+                        Convert.ToSingle(nudY.Value),
+                        Convert.ToSingle(nudZ.Value))
+                };
+
+                propReplacers.Add(rp);
+
+                RefreshList();
+                ClearPropReplacerControls();
+
+
+            }
+            else
+            {
+                MessageBox.Show("Faltan cosas.");
+            }
+        }
+
+        public void RefreshList()
+        {
+            dgvPropReplaceList.DataSource = null;
+            dgvPropReplaceList.DataSource = propReplacers;
+
+            dgvPropReplaceList.Columns["FromProp"].Visible = false;
+            dgvPropReplaceList.Columns["ToProp"].Visible = false;
+
+            dgvPropReplaceList.Columns["FromPropStr"].HeaderText = "From Prop";
+            dgvPropReplaceList.Columns["ToPropStr"].HeaderText = "To Prop";
+
+            dgvPropReplaceList.Columns["RotationOffset"].HeaderText = "Rotation Offset";
+            dgvPropReplaceList.Columns["ChangeRotation"].HeaderText = "Changed Rotation";
+
+            dgvPropReplaceList.AutoSize = true;
+
+            dgvPropReplaceList.Update();
+            dgvPropReplaceList.Refresh();
+
+
+
+
+        }
+
+        private void btnYmapReplace_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbw = new();
+
+
+            DialogResult dr = fbw.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                SelectedYmapsToReplaceProps = Directory.GetFiles(fbw.SelectedPath, "*.ymap");
+
+                tbYmapReplace.Text = fbw.SelectedPath;
+
+                if (SelectedYmapsToReplaceProps.Length > 0)
+                {
+                    MessageBox.Show($"{SelectedYmapsToReplaceProps.Length} YMAP(s) found!", "Information", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void btnOutputReplace_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbw = new();
+
+
+            DialogResult dr = fbw.ShowDialog();
+            if (dr == DialogResult.OK) { tbYmapOutputReplace.Text = fbw.SelectedPath; }
         }
     }
 }
