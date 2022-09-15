@@ -150,8 +150,6 @@ namespace YmapPropSplitter
                         {
                             foreach (var archs in ymapFile.AllEntities)
                             {
-
-
                                 foreach (var addedArch in ytypThing.archetypeNames)
                                 {
                                     if (archs._CEntityDef.archetypeName == addedArch &&
@@ -166,6 +164,10 @@ namespace YmapPropSplitter
 
 
                             }
+                        }
+                        else
+                        {
+                            continue;
                         }
                         Directory.CreateDirectory(Path.Combine(tbOutput.Text, "modified_ymaps"));
 
@@ -260,7 +262,7 @@ namespace YmapPropSplitter
                         YmapFile ymapFile = new();
                         ymapFile.Load(File.ReadAllBytes(ymap));
 
-                        if(ymapFile.AllEntities != null && ymapFile.CarGenerators != null)
+                        if(ymapFile.AllEntities != null || ymapFile.CarGenerators != null)
                         {
                             if (ymapFile.AllEntities != null)
                             {
@@ -273,6 +275,7 @@ namespace YmapPropSplitter
                                 AllCarGenFromYmaps.AddRange(ymapFile.CarGenerators);
                             }
                         }
+
 
 
                         continue;
