@@ -2,9 +2,12 @@ using Arbolito;
 using CodeWalker.GameFiles;
 using CodeWalker.World;
 using ONV_Exporter;
+using SharpDX;
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Forms;
+using Color = System.Drawing.Color;
 
 namespace YmapPropSplitter
 {
@@ -17,7 +20,7 @@ namespace YmapPropSplitter
         public string[] SelectedYmapsToReplaceProps;
         public string[] SelectedTrainTracks;
         public string[] YnvFiles;
-        public List<PropReplacer> propReplacers = new();
+        public List<PropReplacer>? PropReplacersList = new();
         public Form1()
         {
             InitializeComponent();
@@ -583,62 +586,126 @@ namespace YmapPropSplitter
             nudZ.Value = 0;
         }
 
-        public bool PropReplaceValidateControls()
+        public int PropReplaceValidateControls()
         {
             if (!string.IsNullOrEmpty(tbPropFrom.Text) && !string.IsNullOrEmpty(tbPropTo.Text))
             {
-                return true;
+                if(PropReplacersList?.Any() == true)
+                {
+                    foreach (var item in PropReplacersList)
+                    {
+                        if (item.FromPropStr == tbPropFrom.Text)
+                        {
+                            return 4;
+                        }
+                    }
+                }
+                else
+                {
+                    return 3;
+                }
+                return 3;
+            }
+            else if ((nudX.Value == 0 && nudY.Value == 0 && nudZ.Value == 0) && !string.IsNullOrEmpty(tbPropFrom.Text))
+            {
+                return 1;
+            }
+            else if (!string.IsNullOrEmpty(tbPropFrom.Text))
+            {
+                if(PropReplacersList?.Any() == true)
+                {
+                    foreach (var item in PropReplacersList)
+                    {
+                        if (item.FromPropStr == tbPropFrom.Text)
+                        {
+                            return 4;
+                        }
+                    }
+                }
+                else
+                {
+                    return 2;
+                }
+                
+
+                return 2;
+            }
+            else
+            {
+                return 1;
             }
 
-            return false;
+
 
         }
 
         private void btnAddPropReplacing_Click(object sender, EventArgs e)
         {
-            if (PropReplaceValidateControls())
+            if (PropReplaceValidateControls() == 3)
             {
                 PropReplacer rp = new()
                 {
                     FromPropStr = tbPropFrom.Text,
                     ToPropStr = tbPropTo.Text,
-                    RotationOffset = new SharpDX.Vector3(
+                    RotationOffset = new Vector3(
                         Convert.ToSingle(nudX.Value),
                         Convert.ToSingle(nudY.Value),
                         Convert.ToSingle(nudZ.Value))
                 };
 
-                propReplacers.Add(rp);
+                PropReplacersList.Add(rp);
 
                 RefreshList();
-                ClearPropReplacerControls();
 
+
+            }
+            else if (PropReplaceValidateControls() == 2)
+            {
+                PropReplacer rp = new()
+                {
+                    FromPropStr = tbPropFrom.Text,
+                    RotationOffset = new Vector3(
+                        Convert.ToSingle(nudX.Value),
+                        Convert.ToSingle(nudY.Value),
+                        Convert.ToSingle(nudZ.Value))
+                };
+
+                PropReplacersList.Add(rp);
+                RefreshList();
+
+            }
+            else if (PropReplaceValidateControls() == 4)
+            {
+                MessageBox.Show($"This prop replacement already exists in the list therefore cannot be added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             else
             {
-                MessageBox.Show("Faltan cosas.");
+                MessageBox.Show($"It cannot be added, check your entries and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         public void RefreshList()
         {
             dgvPropReplaceList.DataSource = null;
-            dgvPropReplaceList.DataSource = propReplacers;
+            dgvPropReplaceList.DataSource = PropReplacersList;
+
+            dgvPropReplaceList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 
             dgvPropReplaceList.Columns["FromProp"].Visible = false;
             dgvPropReplaceList.Columns["ToProp"].Visible = false;
 
-            dgvPropReplaceList.Columns["FromPropStr"].HeaderText = "From Prop";
-            dgvPropReplaceList.Columns["ToPropStr"].HeaderText = "To Prop";
+            dgvPropReplaceList.Columns["FromPropStr"].HeaderText = "From";
+            dgvPropReplaceList.Columns["ToPropStr"].HeaderText = "To";
 
             dgvPropReplaceList.Columns["RotationOffset"].HeaderText = "Rotation Offset";
             dgvPropReplaceList.Columns["ChangeRotation"].HeaderText = "Changed Rotation";
 
-            dgvPropReplaceList.AutoSize = true;
 
-            dgvPropReplaceList.Update();
             dgvPropReplaceList.Refresh();
+            dgvPropReplaceList.ClearSelection();
 
 
 
@@ -660,7 +727,7 @@ namespace YmapPropSplitter
 
                 if (SelectedYmapsToReplaceProps.Length > 0)
                 {
-                    MessageBox.Show($"{SelectedYmapsToReplaceProps.Length} YMAP(s) found!", "Information", 
+                    MessageBox.Show($"{SelectedYmapsToReplaceProps.Length} YMAP(s) found!", "Information",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -677,6 +744,137 @@ namespace YmapPropSplitter
 
             DialogResult dr = fbw.ShowDialog();
             if (dr == DialogResult.OK) { tbYmapOutputReplace.Text = fbw.SelectedPath; }
+        }
+
+        private void btnProcessPropList_Click(object sender, EventArgs e)
+        {
+
+            if (SelectedYmapsToReplaceProps != null && tbYmapOutputReplace.Text != "")
+            {
+                if (SelectedYmapsToReplaceProps.Length > 0)
+                {
+
+                    if (PropReplacersList?.Any() == true)
+                    {
+                        foreach (var ymapF in SelectedYmapsToReplaceProps)
+                        {
+                            YmapFile ymapFile = new();
+                            ymapFile.Load(File.ReadAllBytes(ymapF));
+                            if (ymapFile.AllEntities != null)
+                            {
+                                for (int i = 0; i < ymapFile.AllEntities.Length; i++)
+                                {
+                                    foreach (var PropReplaceEnt in PropReplacersList)
+                                    {
+                                        if (ymapFile.AllEntities[i]._CEntityDef.archetypeName == PropReplaceEnt.FromProp)
+                                        {
+                                            if (!string.IsNullOrEmpty(PropReplaceEnt.ToPropStr))
+                                            {
+                                                ymapFile.AllEntities[i]._CEntityDef.archetypeName = PropReplaceEnt.ToProp;
+
+                                            }
+                                            if (PropReplaceEnt.ChangeRotation)
+                                            {
+                                                Quaternion quatEnt = ArbolitoMathUtils.Vector4ToQuaternion(ymapFile.AllEntities[i]._CEntityDef.rotation);
+                                                quatEnt *= ArbolitoMathUtils.EulerVectorToQuaternion(PropReplaceEnt.RotationOffset);
+                                                ymapFile.AllEntities[i]._CEntityDef.rotation = ArbolitoMathUtils.QuaternionToVector4(quatEnt);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                            ymapFile.CalcFlags();
+                            byte[] newYmapBytes = ymapFile.Save();
+                            File.WriteAllBytes($"{tbYmapOutputReplace.Text}/{Path.GetFileName(ymapF)}", newYmapBytes);
+
+                        }
+                        MessageBox.Show($"All done, {SelectedYmapsToReplaceProps.Length} ymap(s) processed. \nRemember to rebuild any _manifest.ymf file.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Empty prop replacers list, this cannot continue.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show($"Invalid, missing items\nMake sure to fill the controls correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show($"Invalid, missing items\nMake sure to fill the controls correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btnClearPropList_Click(object sender, EventArgs e)
+        {
+            if (PropReplacersList != null && PropReplacersList.Count > 0)
+            {
+                if (PropReplacersList.Count > 0)
+                {
+
+                    DialogResult dr = MessageBox.Show($"Are you sure you want to empty the replacements list?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.Yes)
+                    {
+                        PropReplacersList.Clear();
+                        dgvPropReplaceList.DataSource = null;
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show($"Nothing to clear.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+        }
+
+        private void dgvPropReplaceList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != null)
+            {
+                btnEditProp.Enabled = true;
+                btnRemoveProp.Enabled = true;
+
+            }
+
+        }
+
+        private void dgvPropReplaceList_SelectionChanged(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void btnRemoveProp_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvPropReplaceList.SelectedCells[0].OwningRow;
+            PropReplacer replacer = (PropReplacer)selectedRow.DataBoundItem;
+            PropReplacersList?.Remove(replacer);
+            RefreshList();
+            btnEditProp.Enabled = false;
+            btnRemoveProp.Enabled = false;
+
+        }
+
+        private void btnEditProp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Work in progress, do not press me again!!!.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
     }
 }

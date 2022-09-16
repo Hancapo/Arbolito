@@ -88,10 +88,13 @@
             this.tbYmapOutputReplace = new System.Windows.Forms.TextBox();
             this.tbYmapReplace = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEditProp = new System.Windows.Forms.Button();
+            this.btnRemoveProp = new System.Windows.Forms.Button();
             this.btnClearPropList = new System.Windows.Forms.Button();
             this.btnProcessPropList = new System.Windows.Forms.Button();
             this.dgvPropReplaceList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.btnResetPropSet = new System.Windows.Forms.Button();
             this.btnAddPropReplacing = new System.Windows.Forms.Button();
             this.label14d = new System.Windows.Forms.Label();
@@ -152,12 +155,12 @@
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
@@ -595,6 +598,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnEditProp);
+            this.groupBox2.Controls.Add(this.btnRemoveProp);
             this.groupBox2.Controls.Add(this.btnClearPropList);
             this.groupBox2.Controls.Add(this.btnProcessPropList);
             this.groupBox2.Controls.Add(this.dgvPropReplaceList);
@@ -603,19 +608,45 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // btnEditProp
+            // 
+            this.btnEditProp.BackColor = System.Drawing.Color.YellowGreen;
+            resources.ApplyResources(this.btnEditProp, "btnEditProp");
+            this.btnEditProp.FlatAppearance.BorderSize = 0;
+            this.btnEditProp.ForeColor = System.Drawing.Color.White;
+            this.btnEditProp.Name = "btnEditProp";
+            this.btnEditProp.UseVisualStyleBackColor = false;
+            this.btnEditProp.Click += new System.EventHandler(this.btnEditProp_Click);
+            // 
+            // btnRemoveProp
+            // 
+            this.btnRemoveProp.BackColor = System.Drawing.Color.YellowGreen;
+            resources.ApplyResources(this.btnRemoveProp, "btnRemoveProp");
+            this.btnRemoveProp.FlatAppearance.BorderSize = 0;
+            this.btnRemoveProp.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveProp.Name = "btnRemoveProp";
+            this.btnRemoveProp.UseVisualStyleBackColor = false;
+            this.btnRemoveProp.Click += new System.EventHandler(this.btnRemoveProp_Click);
+            // 
             // btnClearPropList
             // 
-            this.btnClearPropList.ForeColor = System.Drawing.Color.Black;
+            this.btnClearPropList.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnClearPropList.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnClearPropList, "btnClearPropList");
+            this.btnClearPropList.ForeColor = System.Drawing.Color.White;
             this.btnClearPropList.Name = "btnClearPropList";
-            this.btnClearPropList.UseVisualStyleBackColor = true;
+            this.btnClearPropList.UseVisualStyleBackColor = false;
+            this.btnClearPropList.Click += new System.EventHandler(this.btnClearPropList_Click);
             // 
             // btnProcessPropList
             // 
-            this.btnProcessPropList.ForeColor = System.Drawing.Color.Black;
+            this.btnProcessPropList.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnProcessPropList.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnProcessPropList, "btnProcessPropList");
+            this.btnProcessPropList.ForeColor = System.Drawing.Color.White;
             this.btnProcessPropList.Name = "btnProcessPropList";
-            this.btnProcessPropList.UseVisualStyleBackColor = true;
+            this.btnProcessPropList.UseVisualStyleBackColor = false;
+            this.btnProcessPropList.Click += new System.EventHandler(this.btnProcessPropList_Click);
             // 
             // dgvPropReplaceList
             // 
@@ -623,12 +654,16 @@
             this.dgvPropReplaceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPropReplaceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dgvPropReplaceList, "dgvPropReplaceList");
+            this.dgvPropReplaceList.MultiSelect = false;
             this.dgvPropReplaceList.Name = "dgvPropReplaceList";
             this.dgvPropReplaceList.ReadOnly = true;
             this.dgvPropReplaceList.RowTemplate.Height = 25;
+            this.dgvPropReplaceList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPropReplaceList_CellMouseDown);
+            this.dgvPropReplaceList.SelectionChanged += new System.EventHandler(this.dgvPropReplaceList_SelectionChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.btnResetPropSet);
             this.groupBox1.Controls.Add(this.btnAddPropReplacing);
             this.groupBox1.Controls.Add(this.label14d);
@@ -644,20 +679,30 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.ForeColor = System.Drawing.Color.DarkRed;
+            this.label16.Name = "label16";
+            // 
             // btnResetPropSet
             // 
-            this.btnResetPropSet.ForeColor = System.Drawing.Color.Black;
+            this.btnResetPropSet.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnResetPropSet.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnResetPropSet, "btnResetPropSet");
+            this.btnResetPropSet.ForeColor = System.Drawing.Color.White;
             this.btnResetPropSet.Name = "btnResetPropSet";
-            this.btnResetPropSet.UseVisualStyleBackColor = true;
+            this.btnResetPropSet.UseVisualStyleBackColor = false;
             this.btnResetPropSet.Click += new System.EventHandler(this.btnResetPropSet_Click);
             // 
             // btnAddPropReplacing
             // 
-            this.btnAddPropReplacing.ForeColor = System.Drawing.Color.Black;
+            this.btnAddPropReplacing.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAddPropReplacing.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.btnAddPropReplacing, "btnAddPropReplacing");
+            this.btnAddPropReplacing.ForeColor = System.Drawing.Color.White;
             this.btnAddPropReplacing.Name = "btnAddPropReplacing";
-            this.btnAddPropReplacing.UseVisualStyleBackColor = true;
+            this.btnAddPropReplacing.UseVisualStyleBackColor = false;
             this.btnAddPropReplacing.Click += new System.EventHandler(this.btnAddPropReplacing_Click);
             // 
             // label14d
@@ -858,5 +903,8 @@
         private TextBox tbYmapReplace;
         private Button btnClearPropList;
         private Button btnProcessPropList;
+        private Label label16;
+        private Button btnEditProp;
+        private Button btnRemoveProp;
     }
 }
