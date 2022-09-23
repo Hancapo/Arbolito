@@ -552,7 +552,7 @@ namespace YmapPropSplitter
         {
             if (!string.IsNullOrEmpty(tbPropFrom.Text) && !string.IsNullOrEmpty(tbPropTo.Text))
             {
-                if(PropReplacersList?.Any() == true)
+                if (PropReplacersList?.Any() == true)
                 {
                     foreach (var item in PropReplacersList)
                     {
@@ -574,7 +574,7 @@ namespace YmapPropSplitter
             }
             else if (!string.IsNullOrEmpty(tbPropFrom.Text))
             {
-                if(PropReplacersList?.Any() == true)
+                if (PropReplacersList?.Any() == true)
                 {
                     foreach (var item in PropReplacersList)
                     {
@@ -588,7 +588,7 @@ namespace YmapPropSplitter
                 {
                     return 2;
                 }
-                
+
 
                 return 2;
             }
@@ -735,30 +735,46 @@ namespace YmapPropSplitter
                             ymapFile.Load(File.ReadAllBytes(ymapF));
                             if (ymapFile.AllEntities != null)
                             {
-                                for (int i = 0; i < ymapFile.AllEntities.Length; i++)
+                                foreach (YmapEntityDef yed in ymapFile.AllEntities)
                                 {
                                     foreach (var PropReplaceEnt in PropReplacersList)
                                     {
-                                        if (ymapFile.AllEntities[i]._CEntityDef.archetypeName == PropReplaceEnt.FromProp)
+                                        if (yed._CEntityDef.archetypeName == PropReplaceEnt.FromProp)
                                         {
                                             if (!string.IsNullOrEmpty(PropReplaceEnt.ToPropStr))
                                             {
-                                                ymapFile.AllEntities[i]._CEntityDef.archetypeName = PropReplaceEnt.ToProp;
+                                                yed._CEntityDef.archetypeName = PropReplaceEnt.ToProp;
 
                                             }
                                             if (PropReplaceEnt.ChangeRotation)
                                             {
-                                                Quaternion quatEnt = ymapFile.AllEntities[i]._CEntityDef.rotation.ToQuaternion();
-                                                quatEnt *= ArbolitoMathUtils.EulerVectorToQuaternion(PropReplaceEnt.RotationOffset);
-                                                ymapFile.AllEntities[i]._CEntityDef.rotation = quatEnt.ToVector4();
+                                                if (RotationMode.SelectedIndex == 0)
+                                                {
+                                                    Quaternion quatEnt = yed._CEntityDef.rotation.ToQuaternion();
+                                                    quatEnt *= ArbolitoMathUtils.EulerVectorToQuaternion(PropReplaceEnt.RotationOffset);
+                                                    yed._CEntityDef.rotation = quatEnt.ToVector4();
+                                                }
+                                                else
+                                                {
+                                                    yed._CEntityDef.rotation += ArbolitoMathUtils.EulerVectorToQuaternion(PropReplaceEnt.RotationOffset).ToVector4();
+                                                }
+
                                             }
                                             if (PropReplaceEnt.ChangePosition)
                                             {
-                                                var rotationMAT = ymapFile.AllEntities[i]._CEntityDef.rotation.ToQuaternion().ToMatrix();
-                                                rotationMAT.Invert();
-                                                var hola = rotationMAT.Multiply(PropReplaceEnt.PositionOffset);
-                                                ymapFile.AllEntities[i]._CEntityDef.position += hola;
-                                                    
+                                                if (PositionMode.SelectedIndex == 0)
+                                                {
+                                                    Matrix MatrixRot = yed._CEntityDef.rotation.ToQuaternion().ToMatrix();
+                                                    MatrixRot.Invert();
+                                                    Vector3 PositionOffsetVector = MatrixRot.Multiply(PropReplaceEnt.PositionOffset);
+                                                    yed._CEntityDef.position += PositionOffsetVector;
+                                                }
+                                                else
+                                                {
+                                                    yed._CEntityDef.position += PropReplaceEnt.PositionOffset;
+                                                }
+
+
                                             }
                                         }
                                     }
