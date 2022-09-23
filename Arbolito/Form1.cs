@@ -550,6 +550,11 @@ namespace YmapPropSplitter
 
         public int PropReplaceValidateControls()
         {
+
+            Vector3 NudVector = new Vector3(Convert.ToSingle(nudX.Value), Convert.ToSingle(nudY.Value), Convert.ToSingle(nudZ.Value));
+            Vector3 PusVector = new Vector3(Convert.ToSingle(pusX.Value), Convert.ToSingle(pusY.Value), Convert.ToSingle(pusZ.Value));
+
+
             if (!string.IsNullOrEmpty(tbPropFrom.Text) && !string.IsNullOrEmpty(tbPropTo.Text))
             {
                 if (PropReplacersList?.Any() == true)
@@ -568,7 +573,7 @@ namespace YmapPropSplitter
                 }
                 return 3;
             }
-            else if ((nudX.Value == 0 && nudY.Value == 0 && nudZ.Value == 0) && !string.IsNullOrEmpty(tbPropFrom.Text))
+            else if (NudVector.IsZero && PusVector.IsZero && !string.IsNullOrEmpty(tbPropFrom.Text))
             {
                 return 1;
             }
@@ -591,6 +596,11 @@ namespace YmapPropSplitter
 
 
                 return 2;
+            }
+            else if (!PusVector.IsZero)
+            {
+                return 3;
+
             }
             else
             {
