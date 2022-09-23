@@ -95,9 +95,9 @@
             this.dgvPropReplaceList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.PositionGroup = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.RotationGroup = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label16 = new System.Windows.Forms.Label();
@@ -129,7 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.RotationGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pusZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pusY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
@@ -679,7 +679,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.RotationGroup);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.btnResetPropSet);
             this.groupBox1.Controls.Add(this.btnAddPropReplacing);
@@ -702,17 +702,17 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.radioButton4);
+            this.groupBox4.Controls.Add(this.PositionGroup);
             this.groupBox4.Controls.Add(this.radioButton3);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // radioButton4
+            // PositionGroup
             // 
-            resources.ApplyResources(this.radioButton4, "radioButton4");
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.PositionGroup, "PositionGroup");
+            this.PositionGroup.Name = "PositionGroup";
+            this.PositionGroup.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
@@ -722,13 +722,13 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // RotationGroup
             // 
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            this.RotationGroup.Controls.Add(this.radioButton2);
+            this.RotationGroup.Controls.Add(this.radioButton1);
+            resources.ApplyResources(this.RotationGroup, "RotationGroup");
+            this.RotationGroup.Name = "RotationGroup";
+            this.RotationGroup.TabStop = false;
             // 
             // radioButton2
             // 
@@ -965,8 +965,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.RotationGroup.ResumeLayout(false);
+            this.RotationGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pusZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pusY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).EndInit();
@@ -1057,9 +1057,9 @@
         private NumericUpDown pusY;
         private NumericUpDown pusX;
         private GroupBox groupBox4;
-        private RadioButton radioButton4;
+        private RadioButton PositionGroup;
         private RadioButton radioButton3;
-        private GroupBox groupBox3;
+        private GroupBox RotationGroup;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
     }

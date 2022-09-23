@@ -168,8 +168,288 @@
   <data name="&gt;&gt;btnNavConvert.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.Name" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>812, 516</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tabPage1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbSplitType.Name" xml:space="preserve">
+    <value>cbSplitType</value>
+  </data>
+  <data name="&gt;&gt;cbSplitType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbSplitType.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;cbSplitType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lbYmap.Name" xml:space="preserve">
+    <value>lbYmap</value>
+  </data>
+  <data name="&gt;&gt;lbYmap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbYmap.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;lbYmap.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lbYTYPstatus.Name" xml:space="preserve">
+    <value>lbYTYPstatus</value>
+  </data>
+  <data name="&gt;&gt;lbYTYPstatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbYTYPstatus.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;lbYTYPstatus.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnSplit.Name" xml:space="preserve">
+    <value>btnSplit</value>
+  </data>
+  <data name="&gt;&gt;btnSplit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSplit.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;btnSplit.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutput.Name" xml:space="preserve">
+    <value>btnBrowseOutput</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutput.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutput.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYMAP.Name" xml:space="preserve">
+    <value>btnBrowseYMAP</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYMAP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYMAP.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYMAP.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYTYP.Name" xml:space="preserve">
+    <value>btnBrowseYTYP</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYTYP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYTYP.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYTYP.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;tbOutput.Name" xml:space="preserve">
+    <value>tbOutput</value>
+  </data>
+  <data name="&gt;&gt;tbOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbOutput.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tbOutput.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tbYMAP.Name" xml:space="preserve">
+    <value>tbYMAP</value>
+  </data>
+  <data name="&gt;&gt;tbYMAP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYMAP.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tbYMAP.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;tbYTYP.Name" xml:space="preserve">
+    <value>tbYTYP</value>
+  </data>
+  <data name="&gt;&gt;tbYTYP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYTYP.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tbYTYP.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>804, 488</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>YMAP Splitter</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -573,36 +853,140 @@
   <data name="&gt;&gt;tbYTYP.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="&gt;&gt;lbYmapMerg.Name" xml:space="preserve">
+    <value>lbYmapMerg</value>
   </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;lbYmapMerg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbYmapMerg.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;lbYmapMerg.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbYmapName.Name" xml:space="preserve">
+    <value>tbYmapName</value>
+  </data>
+  <data name="&gt;&gt;tbYmapName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYmapName.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tbYmapName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutputM.Name" xml:space="preserve">
+    <value>btnBrowseOutputM</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutputM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutputM.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseOutputM.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYmapM.Name" xml:space="preserve">
+    <value>btnBrowseYmapM</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYmapM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYmapM.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseYmapM.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tbOutputM.Name" xml:space="preserve">
+    <value>tbOutputM</value>
+  </data>
+  <data name="&gt;&gt;tbOutputM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbOutputM.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tbOutputM.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tbYmapM.Name" xml:space="preserve">
+    <value>tbYmapM</value>
+  </data>
+  <data name="&gt;&gt;tbYmapM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYmapM.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;tbYmapM.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
     <value>804, 488</value>
   </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>YMAP Splitter</value>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>YMAP Merger</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lbYmapMerg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -850,32 +1234,188 @@
   <data name="&gt;&gt;tbYmapM.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;lbTrainTrack.Name" xml:space="preserve">
+    <value>lbTrainTrack</value>
+  </data>
+  <data name="&gt;&gt;lbTrainTrack.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbTrainTrack.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;lbTrainTrack.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tbMoveZ.Name" xml:space="preserve">
+    <value>tbMoveZ</value>
+  </data>
+  <data name="&gt;&gt;tbMoveZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbMoveZ.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tbMoveZ.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbMoveY.Name" xml:space="preserve">
+    <value>tbMoveY</value>
+  </data>
+  <data name="&gt;&gt;tbMoveY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbMoveY.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tbMoveY.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbMoveX.Name" xml:space="preserve">
+    <value>tbMoveX</value>
+  </data>
+  <data name="&gt;&gt;tbMoveX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbMoveX.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tbMoveX.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;button4.Name" xml:space="preserve">
+    <value>button4</value>
+  </data>
+  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;button6.Name" xml:space="preserve">
+    <value>button6</value>
+  </data>
+  <data name="&gt;&gt;button6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button6.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;button6.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;button5.Name" xml:space="preserve">
+    <value>button5</value>
+  </data>
+  <data name="&gt;&gt;button5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button5.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;button5.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btnTrackOutputBrowse.Name" xml:space="preserve">
+    <value>btnTrackOutputBrowse</value>
+  </data>
+  <data name="&gt;&gt;btnTrackOutputBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTrackOutputBrowse.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;btnTrackOutputBrowse.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseTracks.Name" xml:space="preserve">
+    <value>btnBrowseTracks</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseTracks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseTracks.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseTracks.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tbOutputTracks.Name" xml:space="preserve">
+    <value>tbOutputTracks</value>
+  </data>
+  <data name="&gt;&gt;tbOutputTracks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbOutputTracks.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tbOutputTracks.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;tbTrainTracksIn.Name" xml:space="preserve">
+    <value>tbTrainTracksIn</value>
+  </data>
+  <data name="&gt;&gt;tbTrainTracksIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbTrainTracksIn.Parent" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tbTrainTracksIn.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
     <value>804, 488</value>
   </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>YMAP Merger</value>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Train Tracks Mover</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
+    <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="lbTrainTrack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1255,32 +1795,104 @@
   <data name="&gt;&gt;tbTrainTracksIn.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnOnvOutput.Name" xml:space="preserve">
+    <value>btnOnvOutput</value>
+  </data>
+  <data name="&gt;&gt;btnOnvOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOnvOutput.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnOnvOutput.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnYnvInput.Name" xml:space="preserve">
+    <value>btnYnvInput</value>
+  </data>
+  <data name="&gt;&gt;btnYnvInput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnYnvInput.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;btnYnvInput.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tbOnvOutput.Name" xml:space="preserve">
+    <value>tbOnvOutput</value>
+  </data>
+  <data name="&gt;&gt;tbOnvOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbOnvOutput.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;tbOnvOutput.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tbYNVs.Name" xml:space="preserve">
+    <value>tbYNVs</value>
+  </data>
+  <data name="&gt;&gt;tbYNVs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYNVs.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;tbYNVs.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
     <value>804, 488</value>
   </data>
-  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Train Tracks Mover</value>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>YNV to ONV</value>
   </data>
-  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
-    <value>tabPage3</value>
+  <data name="&gt;&gt;tabPage4.Name" xml:space="preserve">
+    <value>tabPage4</value>
   </data>
-  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage4.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1450,32 +2062,164 @@
   <data name="&gt;&gt;tbYNVs.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;grupoCja.Name" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.Parent" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPage5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
     <value>804, 488</value>
   </data>
-  <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="tabPage4.Text" xml:space="preserve">
-    <value>YNV to ONV</value>
+  <data name="tabPage5.Text" xml:space="preserve">
+    <value>Prop Replacer</value>
   </data>
-  <data name="&gt;&gt;tabPage4.Name" xml:space="preserve">
-    <value>tabPage4</value>
+  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
+    <value>tabPage5</value>
   </data>
-  <data name="&gt;&gt;tabPage4.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnOutputReplace.Name" xml:space="preserve">
+    <value>btnOutputReplace</value>
+  </data>
+  <data name="&gt;&gt;btnOutputReplace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOutputReplace.Parent" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;btnOutputReplace.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button7.Name" xml:space="preserve">
+    <value>button7</value>
+  </data>
+  <data name="&gt;&gt;button7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button7.Parent" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;button7.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;tbYmapOutputReplace.Name" xml:space="preserve">
+    <value>tbYmapOutputReplace</value>
+  </data>
+  <data name="&gt;&gt;tbYmapOutputReplace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYmapOutputReplace.Parent" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;tbYmapOutputReplace.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tbYmapReplace.Name" xml:space="preserve">
+    <value>tbYmapReplace</value>
+  </data>
+  <data name="&gt;&gt;tbYmapReplace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbYmapReplace.Parent" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;tbYmapReplace.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="grupoCja.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 173</value>
+  </data>
+  <data name="grupoCja.Size" type="System.Drawing.Size, System.Drawing">
+    <value>786, 82</value>
+  </data>
+  <data name="grupoCja.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="grupoCja.Text" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.Name" xml:space="preserve">
+    <value>grupoCja</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.Parent" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;grupoCja.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1645,29 +2389,89 @@
   <data name="&gt;&gt;tbYmapReplace.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="grupoCja.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 173</value>
+  <data name="&gt;&gt;btnEditProp.Name" xml:space="preserve">
+    <value>btnEditProp</value>
   </data>
-  <data name="grupoCja.Size" type="System.Drawing.Size, System.Drawing">
-    <value>786, 82</value>
+  <data name="&gt;&gt;btnEditProp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="grupoCja.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;btnEditProp.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnEditProp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveProp.Name" xml:space="preserve">
+    <value>btnRemoveProp</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveProp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveProp.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnRemoveProp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnClearPropList.Name" xml:space="preserve">
+    <value>btnClearPropList</value>
+  </data>
+  <data name="&gt;&gt;btnClearPropList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClearPropList.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnClearPropList.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="grupoCja.Text" xml:space="preserve">
-    <value>Files</value>
+  <data name="&gt;&gt;btnProcessPropList.Name" xml:space="preserve">
+    <value>btnProcessPropList</value>
   </data>
-  <data name="&gt;&gt;grupoCja.Name" xml:space="preserve">
-    <value>grupoCja</value>
+  <data name="&gt;&gt;btnProcessPropList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grupoCja.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnProcessPropList.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnProcessPropList.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dgvPropReplaceList.Name" xml:space="preserve">
+    <value>dgvPropReplaceList</value>
+  </data>
+  <data name="&gt;&gt;dgvPropReplaceList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvPropReplaceList.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;dgvPropReplaceList.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 257</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 228</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Prop List</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grupoCja.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>tabPage5</value>
   </data>
-  <data name="&gt;&gt;grupoCja.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnEditProp.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1825,74 +2629,245 @@
   <data name="&gt;&gt;dgvPropReplaceList.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 257</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>792, 228</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Prop List</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButton4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButton4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButton4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 10</value>
-  </data>
-  <data name="radioButton4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 19</value>
-  </data>
-  <data name="radioButton4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButton4.Text" xml:space="preserve">
-    <value>Global</value>
-  </data>
-  <data name="&gt;&gt;radioButton4.Name" xml:space="preserve">
-    <value>radioButton4</value>
-  </data>
-  <data name="&gt;&gt;radioButton4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButton4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;radioButton4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="radioButton3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;RotationGroup.Name" xml:space="preserve">
+    <value>RotationGroup</value>
   </data>
-  <data name="radioButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 10</value>
+  <data name="&gt;&gt;RotationGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 19</value>
+  <data name="&gt;&gt;RotationGroup.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="radioButton3.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;RotationGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnResetPropSet.Name" xml:space="preserve">
+    <value>btnResetPropSet</value>
+  </data>
+  <data name="&gt;&gt;btnResetPropSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnResetPropSet.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnResetPropSet.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnAddPropReplacing.Name" xml:space="preserve">
+    <value>btnAddPropReplacing</value>
+  </data>
+  <data name="&gt;&gt;btnAddPropReplacing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddPropReplacing.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnAddPropReplacing.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pusZ.Name" xml:space="preserve">
+    <value>pusZ</value>
+  </data>
+  <data name="&gt;&gt;pusZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pusZ.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;pusZ.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label14d.Name" xml:space="preserve">
+    <value>label14d</value>
+  </data>
+  <data name="&gt;&gt;label14d.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14d.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label14d.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;pusY.Name" xml:space="preserve">
+    <value>pusY</value>
+  </data>
+  <data name="&gt;&gt;pusY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pusY.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;pusY.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;nudZ.Name" xml:space="preserve">
+    <value>nudZ</value>
+  </data>
+  <data name="&gt;&gt;nudZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudZ.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;nudZ.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;pusX.Name" xml:space="preserve">
+    <value>pusX</value>
+  </data>
+  <data name="&gt;&gt;pusX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pusX.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;pusX.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;nudY.Name" xml:space="preserve">
+    <value>nudY</value>
+  </data>
+  <data name="&gt;&gt;nudY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudY.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;nudY.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;nudX.Name" xml:space="preserve">
+    <value>nudX</value>
+  </data>
+  <data name="&gt;&gt;nudX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nudX.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;nudX.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;tbPropTo.Name" xml:space="preserve">
+    <value>tbPropTo</value>
+  </data>
+  <data name="&gt;&gt;tbPropTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbPropTo.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbPropTo.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;tbPropFrom.Name" xml:space="preserve">
+    <value>tbPropFrom</value>
+  </data>
+  <data name="&gt;&gt;tbPropFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbPropFrom.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbPropFrom.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>786, 167</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="radioButton3.Text" xml:space="preserve">
-    <value>Local</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Replace Prop</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.Name" xml:space="preserve">
+    <value>PositionGroup</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;radioButton3.Name" xml:space="preserve">
     <value>radioButton3</value>
@@ -1927,6 +2902,108 @@
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="PositionGroup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PositionGroup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PositionGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 10</value>
+  </data>
+  <data name="PositionGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 19</value>
+  </data>
+  <data name="PositionGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="PositionGroup.Text" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.Name" xml:space="preserve">
+    <value>PositionGroup</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;PositionGroup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButton3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 10</value>
+  </data>
+  <data name="radioButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 19</value>
+  </data>
+  <data name="radioButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButton3.Text" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="&gt;&gt;radioButton3.Name" xml:space="preserve">
+    <value>radioButton3</value>
+  </data>
+  <data name="&gt;&gt;radioButton3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton3.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;radioButton3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButton2.Name" xml:space="preserve">
+    <value>radioButton2</value>
+  </data>
+  <data name="&gt;&gt;radioButton2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton2.Parent" xml:space="preserve">
+    <value>RotationGroup</value>
+  </data>
+  <data name="&gt;&gt;radioButton2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.Name" xml:space="preserve">
+    <value>radioButton1</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.Parent" xml:space="preserve">
+    <value>RotationGroup</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RotationGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 54</value>
+  </data>
+  <data name="RotationGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 35</value>
+  </data>
+  <data name="RotationGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;RotationGroup.Name" xml:space="preserve">
+    <value>RotationGroup</value>
+  </data>
+  <data name="&gt;&gt;RotationGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RotationGroup.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;RotationGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="radioButton2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1952,7 +3029,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButton2.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>RotationGroup</value>
   </data>
   <data name="&gt;&gt;radioButton2.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1979,30 +3056,9 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButton1.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>RotationGroup</value>
   </data>
   <data name="&gt;&gt;radioButton1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 54</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 35</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
@@ -2382,78 +3438,6 @@
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>16</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>786, 167</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Replace Prop</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tabPage5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>804, 488</value>
-  </data>
-  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabPage5.Text" xml:space="preserve">
-    <value>Prop Replacer</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
-    <value>tabPage5</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>812, 516</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

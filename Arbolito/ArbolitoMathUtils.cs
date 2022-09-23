@@ -11,15 +11,5 @@ namespace Arbolito
             return Quaternion.RotationYawPitchRoll(rads.Y, rads.X, rads.Z);
 
         }
-
-        public static Vector4 QuaternionToVector4(Quaternion quat)
-        {
-            return new Vector4(quat.X, quat.Y, quat.Z, quat.W);
-        }
-
-        public static Quaternion Vector4ToQuaternion(Vector4 vec4)
-        {
-            return new Quaternion(vec4.X, vec4.Y, vec4.Z, vec4.W);
-        }
     }
 }
