@@ -25,15 +25,19 @@ namespace YmapPropSplitter
         public Form1()
         {
             InitializeComponent();
+            DefaultSettings();
+        }
+
+        private void DefaultSettings()
+        {
             cbSplitType.SelectedIndex = 0;
             var culture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             dgvPropReplaceList.ForeColor = Color.Black;
-
-
+            PositionMode.SelectedIndex = 0;
+            RotationMode.SelectedIndex = 0;
         }
-
         private void btnBrowseYTYP_Click(object sender, EventArgs e)
         {
 
@@ -73,11 +77,6 @@ namespace YmapPropSplitter
                     tbYTYP.Text = openFileDialog.FileName;
                 }
             }
-
-
-
-
-
         }
 
         private void btnBrowseYMAP_Click(object sender, EventArgs e)
@@ -118,13 +117,6 @@ namespace YmapPropSplitter
 
             tbOutput.Text = fbw.SelectedPath;
         }
-
-        private void tbYTYP_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void btnSplit_Click(object sender, EventArgs e)
         {
             if (SelectedYmaps != null && tbOutput.Text != String.Empty)
@@ -205,9 +197,6 @@ namespace YmapPropSplitter
                                 File.WriteAllBytes(tbOutput.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
                             }
                         }
-
-
-
                     }
                 }
                 MessageBox.Show($"Processing Complete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -220,8 +209,6 @@ namespace YmapPropSplitter
             }
 
         }
-
-
         // Ymap merger =>
 
         private void btnBrowseYmapM_Click(object sender, EventArgs e)
@@ -246,16 +233,12 @@ namespace YmapPropSplitter
                     MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
-
-
         }
 
 
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
-
             YmapFile yfhola = new();
             yfhola.Name = tbYmapName.Text;
 
@@ -285,13 +268,7 @@ namespace YmapPropSplitter
                                 AllCarGenFromYmaps.AddRange(ymapFile.CarGenerators);
                             }
                         }
-
-
-
                         continue;
-
-
-
                     }
                     yfhola.AllEntities = AllEntsFromYmaps.ToArray();
                     yfhola.CarGenerators = AllCarGenFromYmaps.ToArray();
@@ -317,20 +294,9 @@ namespace YmapPropSplitter
         private void btnBrowseOutputM_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbw = new();
-
-
             DialogResult dr = fbw.ShowDialog();
             if (dr == DialogResult.OK) { tbOutputM.Text = fbw.SelectedPath; }
-
-
-
-
-
         }
-
-
-
-
 
         private void btnMoveTracks_Click(object sender, EventArgs e)
         {
@@ -566,11 +532,6 @@ namespace YmapPropSplitter
             {
                 label1.Text = "Text file";
             }
-        }
-
-        private void tabPage5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnResetPropSet_Click(object sender, EventArgs e)
@@ -869,12 +830,6 @@ namespace YmapPropSplitter
             btnRemoveProp.Enabled = true;
         }
 
-        private void dgvPropReplaceList_SelectionChanged(object sender, EventArgs e)
-        {
-           
-
-        }
-
         private void btnRemoveProp_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dgvPropReplaceList.SelectedCells[0].OwningRow;
@@ -889,11 +844,6 @@ namespace YmapPropSplitter
         private void btnEditProp_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"Work in progress, do not press me again!!!.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
 
         }
     }

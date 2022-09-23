@@ -7,9 +7,9 @@ namespace Arbolito
     public class PropReplacer
     {
         public MetaHash FromProp => JenkHash.GenHash(FromPropStr);
-        public string FromPropStr { get; set; }
+        public string? FromPropStr { get; set; }
         public MetaHash ToProp => JenkHash.GenHash(ToPropStr);
-        public string ToPropStr { get; set; }
+        public string? ToPropStr { get; set; }
         
         public Vector3 RotationOffset { get; set; }
 
@@ -17,7 +17,8 @@ namespace Arbolito
 
         public bool ChangeRotation => !RotationOffset.IsZero;
 
-        public bool ChangePosition => !PositionOffset.IsZero;   
+        public bool ChangePosition => !PositionOffset.IsZero;
+        
 
 
     }

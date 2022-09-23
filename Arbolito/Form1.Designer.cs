@@ -94,13 +94,8 @@
             this.btnProcessPropList = new System.Windows.Forms.Button();
             this.dgvPropReplaceList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.PositionGroup = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.RotationGroup = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label16 = new System.Windows.Forms.Label();
+            this.PositionMode = new System.Windows.Forms.ComboBox();
+            this.RotationMode = new System.Windows.Forms.ComboBox();
             this.btnResetPropSet = new System.Windows.Forms.Button();
             this.btnAddPropReplacing = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -128,8 +123,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.RotationGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pusZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pusY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
@@ -554,7 +547,6 @@
             this.tabPage5.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.tabPage5, "tabPage5");
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
             // 
             // grupoCja
             // 
@@ -674,13 +666,11 @@
             this.dgvPropReplaceList.ReadOnly = true;
             this.dgvPropReplaceList.RowTemplate.Height = 25;
             this.dgvPropReplaceList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPropReplaceList_CellMouseDown);
-            this.dgvPropReplaceList.SelectionChanged += new System.EventHandler(this.dgvPropReplaceList_SelectionChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.RotationGroup);
-            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.PositionMode);
+            this.groupBox1.Controls.Add(this.RotationMode);
             this.groupBox1.Controls.Add(this.btnResetPropSet);
             this.groupBox1.Controls.Add(this.btnAddPropReplacing);
             this.groupBox1.Controls.Add(this.label17);
@@ -700,55 +690,25 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // groupBox4
+            // PositionMode
             // 
-            this.groupBox4.Controls.Add(this.PositionGroup);
-            this.groupBox4.Controls.Add(this.radioButton3);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            this.PositionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PositionMode.FormattingEnabled = true;
+            this.PositionMode.Items.AddRange(new object[] {
+            resources.GetString("PositionMode.Items"),
+            resources.GetString("PositionMode.Items1")});
+            resources.ApplyResources(this.PositionMode, "PositionMode");
+            this.PositionMode.Name = "PositionMode";
             // 
-            // PositionGroup
+            // RotationMode
             // 
-            resources.ApplyResources(this.PositionGroup, "PositionGroup");
-            this.PositionGroup.Name = "PositionGroup";
-            this.PositionGroup.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            resources.ApplyResources(this.radioButton3, "radioButton3");
-            this.radioButton3.Checked = true;
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.TabStop = true;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // RotationGroup
-            // 
-            this.RotationGroup.Controls.Add(this.radioButton2);
-            this.RotationGroup.Controls.Add(this.radioButton1);
-            resources.ApplyResources(this.RotationGroup, "RotationGroup");
-            this.RotationGroup.Name = "RotationGroup";
-            this.RotationGroup.TabStop = false;
-            // 
-            // radioButton2
-            // 
-            resources.ApplyResources(this.radioButton2, "radioButton2");
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Checked = true;
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.ForeColor = System.Drawing.Color.DarkRed;
-            this.label16.Name = "label16";
+            this.RotationMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RotationMode.FormattingEnabled = true;
+            this.RotationMode.Items.AddRange(new object[] {
+            resources.GetString("RotationMode.Items"),
+            resources.GetString("RotationMode.Items1")});
+            resources.ApplyResources(this.RotationMode, "RotationMode");
+            this.RotationMode.Name = "RotationMode";
             // 
             // btnResetPropSet
             // 
@@ -963,10 +923,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.RotationGroup.ResumeLayout(false);
-            this.RotationGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pusZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pusY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).EndInit();
@@ -1049,18 +1005,13 @@
         private TextBox tbYmapReplace;
         private Button btnClearPropList;
         private Button btnProcessPropList;
-        private Label label16;
         private Button btnEditProp;
         private Button btnRemoveProp;
         private Label label17;
         private NumericUpDown pusZ;
         private NumericUpDown pusY;
         private NumericUpDown pusX;
-        private GroupBox groupBox4;
-        private RadioButton PositionGroup;
-        private RadioButton radioButton3;
-        private GroupBox RotationGroup;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private ComboBox PositionMode;
+        private ComboBox RotationMode;
     }
 }
