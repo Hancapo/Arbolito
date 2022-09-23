@@ -13,7 +13,11 @@ namespace Arbolito
         
         public Vector3 RotationOffset { get; set; }
 
+        public Vector3 PositionOffset { get; set; }
+
         public bool ChangeRotation => !RotationOffset.IsZero;
+
+        public bool ChangePosition => !PositionOffset.IsZero;   
 
 
     }

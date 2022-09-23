@@ -1,4 +1,5 @@
 using Arbolito;
+using CodeWalker;
 using CodeWalker.GameFiles;
 using CodeWalker.World;
 using ONV_Exporter;
@@ -650,7 +651,12 @@ namespace YmapPropSplitter
                     RotationOffset = new Vector3(
                         Convert.ToSingle(nudX.Value),
                         Convert.ToSingle(nudY.Value),
-                        Convert.ToSingle(nudZ.Value))
+                        Convert.ToSingle(nudZ.Value)),
+                    PositionOffset = new Vector3(
+                        Convert.ToSingle(pusX.Value),
+                        Convert.ToSingle(pusY.Value),
+                        Convert.ToSingle(pusZ.Value)),
+
                 };
 
                 PropReplacersList.Add(rp);
@@ -667,7 +673,11 @@ namespace YmapPropSplitter
                     RotationOffset = new Vector3(
                         Convert.ToSingle(nudX.Value),
                         Convert.ToSingle(nudY.Value),
-                        Convert.ToSingle(nudZ.Value))
+                        Convert.ToSingle(nudZ.Value)),
+                    PositionOffset = new Vector3(
+                        Convert.ToSingle(pusX.Value),
+                        Convert.ToSingle(pusY.Value),
+                        Convert.ToSingle(pusZ.Value)),
                 };
 
                 PropReplacersList.Add(rp);
@@ -702,6 +712,8 @@ namespace YmapPropSplitter
 
             dgvPropReplaceList.Columns["RotationOffset"].HeaderText = "Rotation Offset";
             dgvPropReplaceList.Columns["ChangeRotation"].HeaderText = "Changed Rotation";
+            dgvPropReplaceList.Columns["ChangePosition"].HeaderText = "Changed Position";
+            dgvPropReplaceList.Columns["PositionOffset"].HeaderText = "Position Offset";
 
 
             dgvPropReplaceList.Refresh();
@@ -775,9 +787,17 @@ namespace YmapPropSplitter
                                             }
                                             if (PropReplaceEnt.ChangeRotation)
                                             {
-                                                Quaternion quatEnt = ArbolitoMathUtils.Vector4ToQuaternion(ymapFile.AllEntities[i]._CEntityDef.rotation);
+                                                Quaternion quatEnt = ymapFile.AllEntities[i]._CEntityDef.rotation.ToQuaternion();
                                                 quatEnt *= ArbolitoMathUtils.EulerVectorToQuaternion(PropReplaceEnt.RotationOffset);
-                                                ymapFile.AllEntities[i]._CEntityDef.rotation = ArbolitoMathUtils.QuaternionToVector4(quatEnt);
+                                                ymapFile.AllEntities[i]._CEntityDef.rotation = quatEnt.ToVector4();
+                                            }
+                                            if (PropReplaceEnt.ChangePosition)
+                                            {
+                                                var rotationMAT = ymapFile.AllEntities[i]._CEntityDef.rotation.ToQuaternion().ToMatrix();
+                                                rotationMAT.Invert();
+                                                var hola = rotationMAT.Multiply(PropReplaceEnt.PositionOffset);
+                                                ymapFile.AllEntities[i]._CEntityDef.position += hola;
+                                                    
                                             }
                                         }
                                     }
@@ -845,13 +865,8 @@ namespace YmapPropSplitter
 
         private void dgvPropReplaceList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex != null)
-            {
-                btnEditProp.Enabled = true;
-                btnRemoveProp.Enabled = true;
-
-            }
-
+            btnEditProp.Enabled = true;
+            btnRemoveProp.Enabled = true;
         }
 
         private void dgvPropReplaceList_SelectionChanged(object sender, EventArgs e)
@@ -874,6 +889,11 @@ namespace YmapPropSplitter
         private void btnEditProp_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"Work in progress, do not press me again!!!.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

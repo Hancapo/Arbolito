@@ -94,11 +94,21 @@
             this.btnProcessPropList = new System.Windows.Forms.Button();
             this.dgvPropReplaceList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label16 = new System.Windows.Forms.Label();
             this.btnResetPropSet = new System.Windows.Forms.Button();
             this.btnAddPropReplacing = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.pusZ = new System.Windows.Forms.NumericUpDown();
             this.label14d = new System.Windows.Forms.Label();
+            this.pusY = new System.Windows.Forms.NumericUpDown();
             this.nudZ = new System.Windows.Forms.NumericUpDown();
+            this.pusX = new System.Windows.Forms.NumericUpDown();
             this.nudY = new System.Windows.Forms.NumericUpDown();
             this.nudX = new System.Windows.Forms.NumericUpDown();
             this.tbPropTo = new System.Windows.Forms.TextBox();
@@ -118,7 +128,12 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pusZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pusY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pusX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
             this.SuspendLayout();
@@ -663,11 +678,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.btnResetPropSet);
             this.groupBox1.Controls.Add(this.btnAddPropReplacing);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.pusZ);
             this.groupBox1.Controls.Add(this.label14d);
+            this.groupBox1.Controls.Add(this.pusY);
             this.groupBox1.Controls.Add(this.nudZ);
+            this.groupBox1.Controls.Add(this.pusX);
             this.groupBox1.Controls.Add(this.nudY);
             this.groupBox1.Controls.Add(this.nudX);
             this.groupBox1.Controls.Add(this.tbPropTo);
@@ -678,6 +699,50 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButton4);
+            this.groupBox4.Controls.Add(this.radioButton3);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // radioButton4
+            // 
+            resources.ApplyResources(this.radioButton4, "radioButton4");
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            resources.ApplyResources(this.radioButton3, "radioButton3");
+            this.radioButton3.Checked = true;
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.TabStop = true;
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.radioButton1);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Checked = true;
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.TabStop = true;
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -705,10 +770,61 @@
             this.btnAddPropReplacing.UseVisualStyleBackColor = false;
             this.btnAddPropReplacing.Click += new System.EventHandler(this.btnAddPropReplacing_Click);
             // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // pusZ
+            // 
+            this.pusZ.BackColor = System.Drawing.Color.SteelBlue;
+            this.pusZ.DecimalPlaces = 5;
+            this.pusZ.ForeColor = System.Drawing.SystemColors.Window;
+            this.pusZ.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.pusZ, "pusZ");
+            this.pusZ.Maximum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            0});
+            this.pusZ.Minimum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            -2147483648});
+            this.pusZ.Name = "pusZ";
+            // 
             // label14d
             // 
             resources.ApplyResources(this.label14d, "label14d");
             this.label14d.Name = "label14d";
+            // 
+            // pusY
+            // 
+            this.pusY.BackColor = System.Drawing.Color.OliveDrab;
+            this.pusY.DecimalPlaces = 5;
+            this.pusY.ForeColor = System.Drawing.SystemColors.Window;
+            this.pusY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.pusY, "pusY");
+            this.pusY.Maximum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            0});
+            this.pusY.Minimum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            -2147483648});
+            this.pusY.Name = "pusY";
             // 
             // nudZ
             // 
@@ -732,6 +848,29 @@
             0,
             -2147483648});
             this.nudZ.Name = "nudZ";
+            // 
+            // pusX
+            // 
+            this.pusX.BackColor = System.Drawing.Color.IndianRed;
+            this.pusX.DecimalPlaces = 5;
+            this.pusX.ForeColor = System.Drawing.SystemColors.Window;
+            this.pusX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.pusX, "pusX");
+            this.pusX.Maximum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            0});
+            this.pusX.Minimum = new decimal(new int[] {
+            65536,
+            0,
+            0,
+            -2147483648});
+            this.pusX.Name = "pusX";
             // 
             // nudY
             // 
@@ -824,7 +963,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropReplaceList)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pusZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pusY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pusX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).EndInit();
             this.ResumeLayout(false);
@@ -906,5 +1052,15 @@
         private Label label16;
         private Button btnEditProp;
         private Button btnRemoveProp;
+        private Label label17;
+        private NumericUpDown pusZ;
+        private NumericUpDown pusY;
+        private NumericUpDown pusX;
+        private GroupBox groupBox4;
+        private RadioButton radioButton4;
+        private RadioButton radioButton3;
+        private GroupBox groupBox3;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }
