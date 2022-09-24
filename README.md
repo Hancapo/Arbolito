@@ -66,6 +66,8 @@ Anyone can contribute to the project, feel free to open an issue to request a ce
 
 # 🛣️ Roadmap
 * Complete UI rework using Avalonia framework (currently being worked, planned for 0.7 release).
+![image](https://user-images.githubusercontent.com/20731612/192081198-1373e06d-fa57-4842-9364-be67314996b9.png)
+
 * .NET 7 Migration
 * Switch to CodeX API when it comes out.
 
