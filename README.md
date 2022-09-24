@@ -51,7 +51,7 @@ Upon YMAP folder selection, the program will notify the user how many YMAPs were
 Output YMAP name sets the output ymap filename
 
 ## 🛤️ Train Tracks Mover
-Moves train tracks files ```Examples: trains1.dat, trains2.dat, trainse.dat```  along XYZ axis given an offset.
+Moves train tracks files ```Examples: trains1.dat, trains2.dat, trains3.dat```  along XYZ axis given an offset.
 
 ![image](https://user-images.githubusercontent.com/20731612/192080819-9b73e715-e594-4abd-87cb-974d461387ec.png)
 
