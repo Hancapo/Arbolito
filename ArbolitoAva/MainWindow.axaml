@@ -1,0 +1,121 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+		Width="1280" Height="720"
+		WindowStartupLocation="CenterScreen"
+		xmlns:dialogHost="clr-namespace:DialogHost;assembly=DialogHost.Avalonia"
+		CanResize="False"
+        x:Class="ArbolitoAva.MainWindow"
+		Background="#121212"
+        Title="ArbolitoAva">
+	<Grid RowDefinitions="70, *, 100">
+		<Grid x:Name="TitleArbolito"  Background="Green">
+			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" >
+				<Label FontSize="30">🌳</Label>
+				<Label FontSize="30">Arbolito</Label>
+			</StackPanel>
+		</Grid>
+		<Grid Height="50" VerticalAlignment="Bottom" Background="#1F1F1F" Grid.Row="2">
+			<StackPanel VerticalAlignment="Center" Margin="0,0,20,0" HorizontalAlignment="Right">
+				<Label>Version 0.7</Label>
+			</StackPanel>
+			<StackPanel VerticalAlignment="Center" Margin="20,0,0,0" HorizontalAlignment="Left">
+				<Label>MrVicho13</Label>
+			</StackPanel>
+		</Grid>
+
+		<TabControl Grid.Row="1" TabStripPlacement="Left">
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+						<Label Margin="0,-4,5,0">🪓</Label>
+						<Label>YMAP Splitter</Label>
+					</StackPanel>
+				</TabItem.Header>
+				<StackPanel Margin="10" Spacing="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<StackPanel HorizontalAlignment="Center" Spacing="20" Orientation="Horizontal">
+						<Label VerticalContentAlignment="Center" Content="Split by"/>
+						<ComboBox Width="100">
+							<ComboBoxItem Content="YTYP"/>
+							<ComboBoxItem Content="Text file"/>
+						</ComboBox>
+					</StackPanel>
+					<StackPanel Height="10"/>
+
+					<StackPanel Orientation="Horizontal">
+						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="YTYP Folder"/>
+						<TextBox Margin="0,0,10,0" Width="500" Text=""/>
+						<Button Content="🔍"/>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="YMAP Folder"/>
+						<TextBox Margin="0,0,10,0" Width="500" Text=""/>
+						<Button Content="🔍"/>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="Output Folder"/>
+						<TextBox Margin="0,0,10,0" Width="500" Text=""/>
+						<Button Content="🔍"/>
+					</StackPanel>
+					<StackPanel Height="30"/>
+					<StackPanel Orientation="Horizontal" Spacing="112">
+						<Label VerticalContentAlignment="Center" Content="No YTYPs loaded" Foreground="IndianRed"/>
+						<Button FontSize="20" Content="Split" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" Width="200"/>
+						<Label VerticalContentAlignment="Center"  Content="No YMAPs loaded" Foreground="IndianRed"/>
+					</StackPanel>
+					
+				</StackPanel>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+						<Label Margin="0,-6,5,0">🪡</Label>
+						<Label>YMAP Merger</Label>
+					</StackPanel>
+				</TabItem.Header>
+				<StackPanel Margin="20">
+					<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Button>A button in the triangle page !</Button>
+				</StackPanel>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+						<Label Margin="0,-6,5,0">🚄</Label>
+						<Label>Train Tracks Mover</Label>
+					</StackPanel>
+				</TabItem.Header>
+				<StackPanel Margin="20">
+					<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Button>A button in the triangle page !</Button>
+				</StackPanel>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+						<Label Margin="0,-6,5,0">👣</Label>
+						<Label>YNV to ONV</Label>
+					</StackPanel>
+				</TabItem.Header>
+				<StackPanel Margin="20">
+					<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Button>A button in the triangle page !</Button>
+				</StackPanel>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+						<Label Margin="0,-6,5,0">🎳</Label>
+						<Label>Prop Replacer</Label>
+					</StackPanel>
+				</TabItem.Header>
+				<StackPanel Margin="20">
+					<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+					<Button>A button in the triangle page !</Button>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>
