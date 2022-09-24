@@ -64,6 +64,10 @@ Upon Train Tracks folder selection, the program will notify the user how many Tr
 # 🚁 Contributing
 Anyone can contribute to the project, feel free to open an issue to request a certain feature, or PR anything you think could be done better
 
+# 🛣️ Roadmap
+* Complete UI rework using Avalonia framework (currently being worked, planned for 0.7 release).
+* .NET 7 Migration
+* Switch to CodeX API when it comes out.
 
 # 📗 License
 Arbolito is licenced under the [MIT License](https://github.com/Hancapo/Arbolito/blob/master/LICENSE.txt)
