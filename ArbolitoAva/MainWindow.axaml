@@ -37,7 +37,7 @@
 				<StackPanel Margin="10" Spacing="10" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<StackPanel HorizontalAlignment="Center" Spacing="20" Orientation="Horizontal">
 						<Label VerticalContentAlignment="Center" Content="Split by"/>
-						<ComboBox Width="100">
+						<ComboBox x:Name="CbSplitBy" Width="100">
 							<ComboBoxItem Content="YTYP"/>
 							<ComboBoxItem Content="Text file"/>
 						</ComboBox>
@@ -45,26 +45,34 @@
 					<StackPanel Height="10"/>
 
 					<StackPanel Orientation="Horizontal">
-						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="YTYP Folder"/>
-						<TextBox Margin="0,0,10,0" Width="500" Text=""/>
-						<Button Content="🔍"/>
+						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="Source"/>
+						<TextBox x:Name="TbSplitSourceField" Margin="0,0,10,0" Width="500" Text=""/>
+						<Button x:Name="BtnSplitSourceBrowse" Click="OnBtnSplitSourceBrowseClick" Content="🔍"/>
 					</StackPanel>
 					<StackPanel Orientation="Horizontal">
 						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="YMAP Folder"/>
-						<TextBox Margin="0,0,10,0" Width="500" Text=""/>
-						<Button Content="🔍"/>
+						<TextBox x:Name="TbSplitYmapField" Margin="0,0,10,0" Width="500" Text=""/>
+						<Button x:Name="BtnSplitYmapBrowse" Click="OnBtnSplitYmapBrowseClick" Content="🔍"/>
 					</StackPanel>
 					<StackPanel Orientation="Horizontal">
 						<Label Width="100" Margin="0,0,20,0" VerticalContentAlignment="Center" Content="Output Folder"/>
-						<TextBox Margin="0,0,10,0" Width="500" Text=""/>
-						<Button Content="🔍"/>
+						<TextBox x:Name="TbSplitOutputField" Margin="0,0,10,0" Width="500" Text=""/>
+						<Button x:Name="BtnSplitOutputBrowse" Content="🔍" Click="OnBtnSplitOutputBrowseClick"/>
 					</StackPanel>
 					<StackPanel Height="30"/>
+					<StackPanel>
+						<ProgressBar ShowProgressText="True">
+							<ProgressBar.Value>50</ProgressBar.Value>
+						</ProgressBar>
+					</StackPanel>
+					<StackPanel Height="30"/>
+
 					<StackPanel Orientation="Horizontal" Spacing="112">
 						<Label VerticalContentAlignment="Center" Content="No YTYPs loaded" Foreground="IndianRed"/>
-						<Button FontSize="20" Content="Split" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" Width="200"/>
+						<Button FontSize="30" Content="🪓" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" Width="200"/>
 						<Label VerticalContentAlignment="Center"  Content="No YMAPs loaded" Foreground="IndianRed"/>
 					</StackPanel>
+					
 					
 				</StackPanel>
 			</TabItem>
@@ -83,7 +91,7 @@
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-						<Label Margin="0,-6,5,0">🚄</Label>
+						<Label Margin="0,-6,5,0">🛤️</Label>
 						<Label>Train Tracks Mover</Label>
 					</StackPanel>
 				</TabItem.Header>

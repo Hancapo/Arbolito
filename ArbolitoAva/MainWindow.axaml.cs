@@ -9,12 +9,37 @@ namespace ArbolitoAva
         public MainWindow()
         {
             InitializeComponent();
+            CbSplitBy.SelectedIndex = 0;
         }
 
-        private void OnTestButtonClick(object sender, RoutedEventArgs e)
+        private void OnBtnSplitSourceBrowseClick(object sender, RoutedEventArgs e)
         {
-            var dialog = new SaveFileDialog();
-            dialog.ShowAsync(this);
+            var dlg = new OpenFolderDialog();
+            var result = dlg.ShowAsync(this).Result;
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                TbSplitSourceField.Text = result.ToString();
+            }
+        }
+
+        private void OnBtnSplitYmapBrowseClick(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFolderDialog();
+            var result = dlg.ShowAsync(this).Result;
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                TbSplitYmapField.Text = result.ToString();
+            }
+        }
+
+        private void OnBtnSplitOutputBrowseClick(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFolderDialog();
+            var result = dlg.ShowAsync(this).Result;
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                TbSplitOutputField.Text = result.ToString();
+            }
         }
     }
 }
