@@ -39,7 +39,7 @@ prop3_helloworld
 ```
 
 ## 🪡YMAP Merger
-Merges YMAP files (supports for ```EntityDefs``` and ```CarGens```), it creates a new YMAP with the given name which can be found in the output folder.
+Merges YMAP files (supports ```EntityDefs``` and ```CarGens```), it creates a new YMAP with the given name which can be found in the output folder.
 
 ⚠️ *It potentially can break YMAPs with LOD parenting, be careful with which YMAPs you are going to work with.*
 
