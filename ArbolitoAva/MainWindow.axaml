@@ -4,7 +4,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
 		Width="1280" Height="720"
-		WindowStartupLocation="CenterScreen"
 		xmlns:dialogHost="clr-namespace:DialogHost;assembly=DialogHost.Avalonia"
 		CanResize="False"
         x:Class="ArbolitoAva.MainWindow"
@@ -61,16 +60,15 @@
 					</StackPanel>
 					<StackPanel Height="30"/>
 					<StackPanel>
-						<ProgressBar ShowProgressText="True">
-							<ProgressBar.Value>50</ProgressBar.Value>
+						<ProgressBar x:Name="PbSplitProgress" ShowProgressText="True">
 						</ProgressBar>
 					</StackPanel>
 					<StackPanel Height="30"/>
 
 					<StackPanel Orientation="Horizontal" Spacing="112">
-						<Label VerticalContentAlignment="Center" Content="No YTYPs loaded" Foreground="IndianRed"/>
-						<Button FontSize="30" Content="🪓" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" Width="200"/>
-						<Label VerticalContentAlignment="Center"  Content="No YMAPs loaded" Foreground="IndianRed"/>
+						<Label x:Name="LbSplitSource" VerticalContentAlignment="Center" Content="No YTYPs loaded" Foreground="IndianRed"/>
+						<Button x:Name="BtnSplitMappings" Click="OnBtnSplitMappingsClick" FontSize="30" Content="🪓" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" Width="200"/>
+						<Label x:Name="LbSplitYmap" VerticalContentAlignment="Center"  Content="No YMAPs loaded" Foreground="IndianRed"/>
 					</StackPanel>
 					
 					
