@@ -12,7 +12,7 @@
 	<Grid RowDefinitions="70, *, 100">
 		<Grid x:Name="TitleArbolito"  Background="Green">
 			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" >
-				<Label FontSize="30">🌳</Label>
+				<Label Margin="0,-7.5,0,0" FontSize="30">🌳</Label>
 				<Label FontSize="30">Arbolito</Label>
 			</StackPanel>
 		</Grid>
@@ -25,7 +25,7 @@
 			</StackPanel>
 		</Grid>
 
-		<TabControl Grid.Row="1" TabStripPlacement="Left">
+		<TabControl x:Name="TabControlMenu" SelectionChanged="TCSelectionChanged" Grid.Row="1" TabStripPlacement="Left">
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
@@ -36,7 +36,7 @@
 				<StackPanel Margin="10" Spacing="10" VerticalAlignment="Center" HorizontalAlignment="Center">
 					<StackPanel HorizontalAlignment="Center" Spacing="20" Orientation="Horizontal">
 						<Label VerticalContentAlignment="Center" Content="Split by"/>
-						<ComboBox x:Name="CbSplitBy" Width="100">
+						<ComboBox SelectedIndex="0" x:Name="CbSplitBy" Width="100">
 							<ComboBoxItem Content="YTYP"/>
 							<ComboBoxItem Content="Text file"/>
 						</ComboBox>
@@ -120,6 +120,47 @@
 				<StackPanel Margin="20">
 					<TextBlock Text="I am in the triangle page ! I'll put a button to show you that each page contains what you want." HorizontalAlignment="Left" VerticalAlignment="Center"/>
 					<Button>A button in the triangle page !</Button>
+				</StackPanel>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+						<Label Margin="0,-6,5,0">🗃️</Label>
+						<Label>Files Extractor</Label>
+					</StackPanel>
+				</TabItem.Header>
+				<StackPanel VerticalAlignment="Center">
+					<Grid>
+						<Grid RowDefinitions="70,70,70,70,70">
+							<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+								<Label Content="Extract by" VerticalContentAlignment="Center" Margin="0,0,10,0"/>
+								<ComboBox SelectionChanged="CbExtractTypeChanged" x:Name="CbExtractType" SelectedIndex="0" Width="230">
+									<ComboBoxItem Content="Text file"/>
+									<ComboBoxItem Content="YMAP file(s)"/>
+									<ComboBoxItem Content="YTYP file(s)"/>
+								</ComboBox>
+							</StackPanel>
+							<StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+								<Label VerticalContentAlignment="Center" Content="Source folder"/>
+								<TextBox x:Name="TbExtractSourcePath" Width="500" Height="30"/>
+								<Button Click="BtnSelectSourceExtractClick" x:Name="BtnSelectSourceExtract" Content="🔍" Margin="10,0,0,0"/>
+							</StackPanel>
+							<StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+								<Label VerticalContentAlignment="Center" Content="Output folder"/>
+								<TextBox x:Name="TbExtractOutputPath" Width="500" Height="30"/>
+								<Button Click="BtnSelectOutputExtractClick" x:Name="BtnSelectOutputExtract" Content="🔍" Margin="10,0,0,0"/>
+							</StackPanel>
+							<StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="100" VerticalAlignment="Center" HorizontalAlignment="Center">
+								<CheckBox x:Name="checkBoxEnableMods">Enable Mods</CheckBox>
+								<Button Click="BtnExtractFilesClick" x:Name="BtnExtractFiles" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" Width="200" Height="60" Content="🗃️" Margin="10,0,0,0"/>
+								<CheckBox x:Name="checkBoxEnableDLCs">Enable DLCs</CheckBox>
+
+							</StackPanel>
+							<StackPanel Grid.Row="4" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+								<Label PropertyChanged="LbGTALoadingChanged" x:Name="LbGTALoadingStatus" Content="Loading GTA 5...."/>
+							</StackPanel>
+						</Grid>
+					</Grid>
 				</StackPanel>
 			</TabItem>
 		</TabControl>

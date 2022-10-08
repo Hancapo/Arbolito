@@ -15,10 +15,10 @@
 
   <ItemGroup>
     <Reference Include="CodeWalker.Core">
-      <HintPath>..\..\..\..\..\Desktop\CodeWalker30_dev44\CodeWalker.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\CodeWalker30_dev44\CodeWalker30_dev44\CodeWalker.Core.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Mathematics">
-      <HintPath>..\..\..\..\..\Desktop\CodeWalker30_dev44\SharpDX.Mathematics.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\CodeWalker30_dev44\CodeWalker30_dev44\SharpDX.Mathematics.dll</HintPath>
     </Reference>
   </ItemGroup>
 
