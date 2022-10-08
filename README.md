@@ -4,7 +4,7 @@ Arbolito is an experimental mapping tool designed to manipulate Grand Theft Auto
 
 
 
-![image](https://im4.ezgif.com/tmp/ezgif-4-9f8e77c8a4.gif)
+[![image](https://cdn.discordapp.com/attachments/717937461602549790/1024006662102716426/ezgif-4-9f8e77c8a4.gif))
 
 
 
