@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using Avalonia.Threading;
 using System.Diagnostics;
 using System.Text;
-using System.ComponentModel;
 using Avalonia;
 
 namespace ArbolitoAva
@@ -30,16 +29,16 @@ namespace ArbolitoAva
         public string[] YnvFiles;
 
         public List<PropReplacer>? PropReplacersList = new();
-        public string? gtavpath;
-        public RpfManager rpfman = new();
-        
+        public string? GTAVPath;
+        public RpfManager RpfMan = new();
+
         public MainWindow()
         {
             InitializeComponent();
             DefaultSettings();
         }
-        private void DefaultSettings()
-        { 
+        private static void DefaultSettings()
+        {
             var culture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
@@ -47,31 +46,25 @@ namespace ArbolitoAva
             //PositionMode.SelectedIndex = 0;
             //RotationMode.SelectedIndex = 0;
 
-            
+
         }
         private void OnBtnSplitSourceBrowseClick(object sender, RoutedEventArgs e)
         {
-
-            if(CbSplitBy.SelectedIndex == 0)
+            if (CbSplitBy.SelectedIndex == 0)
             {
                 var dlg = new OpenFolderDialog();
                 var result = dlg.ShowAsync(this).Result;
-                if (!string.IsNullOrWhiteSpace(result))
+                if (string.IsNullOrWhiteSpace(result)) return;
+                TbSplitSourceField.Text = result.ToString();
+                var ytypCount = Directory.GetFiles(result, "*.ytyp").Length;
+                if (ytypCount > 0)
                 {
-                    TbSplitSourceField.Text = result.ToString();
-                    int ytypCount = Directory.GetFiles(result, "*.ytyp").Length;
-
-                    if (ytypCount > 0)
-                    {
-                        SelectedYtyps = Directory.GetFiles(result, "*.ytyp");
-
-                        LbSplitSource.Content = ($"{ytypCount} YTYP(s) found!");
-
-
-                    }
-                    else
-                    {
-                        var msBoxSourceStatus = MessageBoxManager
+                    SelectedYtyps = Directory.GetFiles(result, "*.ytyp");
+                    LbSplitSource.Content = ($"{ytypCount} YTYP(s) found!");
+                }
+                else
+                {
+                    var msBoxSourceStatus = MessageBoxManager
                         .GetMessageBoxStandardWindow(new MessageBoxStandardParams
                         {
                             ButtonDefinitions = ButtonEnum.Ok,
@@ -79,15 +72,13 @@ namespace ArbolitoAva
                             CanResize = false,
                             Icon = MessageBox.Avalonia.Enums.Icon.Warning,
                             ShowInCenter = true,
+                            WindowStartupLocation = WindowStartupLocation.CenterOwner,
                             ContentMessage = "No YTYP(s) found!",
                         });
-                        msBoxSourceStatus.ShowDialog(this);
-                        //MessageBox.Show($"No YTYP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        LbSplitSource.Content = ($"Text file loaded");
-
-                    }
+                    msBoxSourceStatus.ShowDialog(this);
+                    //MessageBox.Show($"No YTYP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    LbSplitSource.Content = ($"Text file loaded");
                 }
-
             }
             else
             {
@@ -95,35 +86,29 @@ namespace ArbolitoAva
                 {
                     AllowMultiple = false,
                 };
-                string? result;
-                result = ofd.ShowAsync(this).Result?[0];
+                var result = ofd.ShowAsync(this).Result?[0];
                 if (!string.IsNullOrWhiteSpace(result))
                 {
                     TbSplitSourceField.Text = result;
                 }
             }
-            
-            
         }
 
         private void OnBtnSplitYmapBrowseClick(object sender, RoutedEventArgs e)
         {
             var dlg = new OpenFolderDialog();
             var result = dlg.ShowAsync(this).Result;
-            if (!string.IsNullOrWhiteSpace(result))
+            if (string.IsNullOrWhiteSpace(result)) return;
+            TbSplitYmapField.Text = result;
+            var ymapCount = Directory.GetFiles(result, "*.ymap").Length;
+            if (ymapCount > 0)
             {
-                TbSplitYmapField.Text = result.ToString();
-                int ymapCount = Directory.GetFiles(result.ToString(), "*.ymap").Length;
-
-                if(ymapCount > 0)
-                {
-                    SelectedYmaps = Directory.GetFiles(result.ToString(), "*.ymap");
-                    
-                    LbSplitYmap.Content = $"{ymapCount} YMAP(s) found!";
-                }
-                else
-                {
-                    var msBoxYmapStatus = MessageBoxManager
+                SelectedYmaps = Directory.GetFiles(result, "*.ymap");
+                LbSplitYmap.Content = $"{ymapCount} YMAP(s) found!";
+            }
+            else
+            {
+                var msBoxYmapStatus = MessageBoxManager
                     .GetMessageBoxStandardWindow(new MessageBoxStandardParams
                     {
                         ButtonDefinitions = ButtonEnum.Ok,
@@ -131,13 +116,12 @@ namespace ArbolitoAva
                         CanResize = false,
                         Icon = MessageBox.Avalonia.Enums.Icon.Warning,
                         ShowInCenter = true,
+                        WindowStartupLocation = WindowStartupLocation.CenterOwner,
                         ContentMessage = "No YMAP(s) found",
                     });
-                    msBoxYmapStatus.ShowDialog(this);
-                    //MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                msBoxYmapStatus.ShowDialog(this);
+                //MessageBox.Show($"No YMAP(s) found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-
-                }
 
             }
         }
@@ -148,7 +132,7 @@ namespace ArbolitoAva
             var result = dlg.ShowAsync(this).Result;
             if (!string.IsNullOrWhiteSpace(result))
             {
-                TbSplitOutputField.Text = result.ToString();
+                TbSplitOutputField.Text = result;
             }
         }
 
@@ -159,100 +143,61 @@ namespace ArbolitoAva
 
         private void SplitYmaps()
         {
-            List<ArchetypeElement> YtypArchetypesNames = new();
-            
-
-            if (SelectedYmaps != null && TbSplitOutputField.Text != String.Empty)
+            List<ArchetypeElement> ytypArchetypesNames;
+            if (TbSplitOutputField.Text != string.Empty)
             {
-
                 //YMAP Processing
                 var timer = new Stopwatch();
                 timer.Start();
                 Parallel.ForEach(SelectedYmaps, ymap =>
                 {
-
-                    int ymapProgress = (int)Math.Round((double)(Array.IndexOf(SelectedYmaps, ymap) + 1) / SelectedYmaps.Length * 100);
-
+                    var ymapProgress = (int)Math.Round((double)(Array.IndexOf(SelectedYmaps, ymap) + 1) / SelectedYmaps.Length * 100);
                     Dispatcher.UIThread.InvokeAsync(() =>
                     {
                         //Normalize integer value from 0 to 100
-
                         PbSplitProgress.Value = ymapProgress;
-
-
                     });
-
                     YmapFile ymapFile = new();
                     ymapFile.Load(File.ReadAllBytes(ymap));
-
-                    string ymapFileName = Path.GetFileNameWithoutExtension(ymap);
-
-
-                    if (CbSplitBy.SelectedIndex == 0)
-                    {
-                        YtypArchetypesNames = GetArchetypeElementList(SelectedYtyps);
-                    }
-                    else
-                    {
-                        YtypArchetypesNames = GetArchetypeElementList(TbSplitSourceField.Text);
-
-                    }
-                    foreach (ArchetypeElement? ytypThing in YtypArchetypesNames)
+                    var ymapFileName = Path.GetFileNameWithoutExtension(ymap);
+                    ytypArchetypesNames = CbSplitBy.SelectedIndex == 0 ? GetArchetypeElementList(SelectedYtyps) : GetArchetypeElementList(TbSplitSourceField.Text);
+                    foreach (var ytypThing in ytypArchetypesNames)
                     {
                         List<YmapEntityDef> foundEntities = new();
-
                         if (ymapFile.AllEntities != null && (ymapFile.AllEntities != null || ymapFile.CarGenerators == null))
                         {
-
-                            foreach (YmapEntityDef archs in CollectionsMarshal.AsSpan(ymapFile.AllEntities?.ToList()))
+                            foreach (var archs in CollectionsMarshal.AsSpan(ymapFile.AllEntities?.ToList()))
                             {
-                                foreach (var addedArch in ytypThing.archetypeNames)
+                                foreach (var addedArch in ytypThing.archetypeNames.Where(addedArch => archs._CEntityDef.archetypeName == addedArch &&
+                                             archs._CEntityDef.lodLevel is rage__eLodType.LODTYPES_DEPTH_ORPHANHD or rage__eLodType.LODTYPES_DEPTH_HD))
                                 {
-                                    if (archs._CEntityDef.archetypeName == addedArch &&
-                                        (archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_ORPHANHD ||
-                                        archs._CEntityDef.lodLevel == rage__eLodType.LODTYPES_DEPTH_HD))
-                                    {
-                                        foundEntities.Add(archs);
-                                        ymapFile.RemoveEntity(archs);
-                                    }
-
+                                    foundEntities.Add(archs);
+                                    ymapFile.RemoveEntity(archs);
                                 }
-
-
                             }
                         }
                         Directory.CreateDirectory(Path.Combine(TbSplitOutputField.Text, "modified_ymaps"));
-
-                        byte[] newYmapBytes = ymapFile.Save();
+                        var newYmapBytes = ymapFile.Save();
                         File.WriteAllBytesAsync(Path.Combine(TbSplitOutputField.Text, "modified_ymaps") + $"\\{ymapFileName}.ymap", newYmapBytes);
-                        if (foundEntities.Count > 0)
+                        if (foundEntities.Count <= 0) continue;
+                        YmapFile splittedYmap = new()
                         {
-                            YmapFile SplittedYmap = new()
-                            {
-                                Name = $"{ymapFileName}_{ytypThing.YtypName}"
-                            };
-
-                            //foreach (var item in foundEntities)
-                            //{
-                            //    SplittedYmap.AddEntity(item);
+                            Name = $"{ymapFileName}_{ytypThing.YtypName}",
                             //}
-
-                            SplittedYmap.AllEntities = foundEntities.ToArray();
-
-                            if (SplittedYmap.AllEntities != null)
-                            {
-                                SplittedYmap.BuildCEntityDefs();
-                                SplittedYmap.CalcExtents();
-                                SplittedYmap.CalcFlags();
-                                SplittedYmap.BuildCCarGens();
-                                byte[] newYmapBytes2 = SplittedYmap.Save();
-                                File.WriteAllBytesAsync(TbSplitOutputField.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
-                            }
-                        }
+                            //    SplittedYmap.AddEntity(item);
+                            //{
+                            //foreach (var item in foundEntities)
+                            AllEntities = foundEntities.ToArray()
+                        };
+                        if (splittedYmap.AllEntities == null) continue;
+                        splittedYmap.BuildCEntityDefs();
+                        splittedYmap.CalcExtents();
+                        splittedYmap.CalcFlags();
+                        splittedYmap.BuildCCarGens();
+                        var newYmapBytes2 = splittedYmap.Save();
+                        File.WriteAllBytesAsync(TbSplitOutputField.Text + $"\\{ymapFileName}_{ytypThing.YtypName}.ymap", newYmapBytes2);
                     }
-
                 });
-
                 timer.Stop();
                 Debug.WriteLine($"Elapsed time: {timer.ElapsedMilliseconds / 1000.0} second(s)");
                 Dispatcher.UIThread.InvokeAsync(() =>
@@ -265,21 +210,15 @@ namespace ArbolitoAva
                         CanResize = false,
                         Icon = MessageBox.Avalonia.Enums.Icon.Info,
                         ShowInCenter = true,
+                        WindowStartupLocation = WindowStartupLocation.CenterOwner,
                         ContentMessage = "Ymaps splitted successfully!",
                     });
-
                     msBoxYmapSuccess.ShowDialog(this);
-
                     PbSplitProgress.Value = 0;
-
-
                 });
-                
-
             }
             else
             {
-                
                 Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     var msBoxYtypYmapMissing = MessageBoxManager
@@ -289,6 +228,7 @@ namespace ArbolitoAva
                         ContentTitle = "Warning",
                         CanResize = false,
                         Icon = MessageBox.Avalonia.Enums.Icon.Warning,
+                        WindowStartupLocation = WindowStartupLocation.CenterOwner,
                         ContentMessage = "Please select YTYP and YMAP files!",
                     });
                     msBoxYtypYmapMissing.ShowDialog(this);
@@ -297,11 +237,11 @@ namespace ArbolitoAva
             }
         }
 
-        private static List<ArchetypeElement> GetArchetypeElementList(string[] ytypsFiles)
+        private static List<ArchetypeElement> GetArchetypeElementList(IEnumerable<string> YtypsFiles)
         {
             List<ArchetypeElement> ArchetypesNames = new();
 
-            Parallel.ForEach(ytypsFiles, ytyp =>
+            Parallel.ForEach(YtypsFiles, ytyp =>
             {
                 ArchetypeElement archetypeElement = new();
 
@@ -312,14 +252,11 @@ namespace ArbolitoAva
 
                 List<MetaHash> metaHashes = new();
 
-                metaHashes.AddRange(ytypFile.AllArchetypes.Where(archs => archs.Type == MetaName.CBaseArchetypeDef || archs.Type == MetaName.CTimeArchetypeDef).Select(archs => archs.Hash));
+                metaHashes.AddRange(ytypFile.AllArchetypes.Where(archs => archs.Type is MetaName.CBaseArchetypeDef or MetaName.CTimeArchetypeDef).Select(archs => archs.Hash));
 
-                if (metaHashes.Count > 0)
-                {
-                    archetypeElement.archetypeNames = metaHashes;
-                    ArchetypesNames.Add(archetypeElement);
-
-                }
+                if (metaHashes.Count <= 0) return;
+                archetypeElement.archetypeNames = metaHashes;
+                ArchetypesNames.Add(archetypeElement);
             });
 
             return ArchetypesNames;
@@ -351,28 +288,28 @@ namespace ArbolitoAva
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     LbGTALoadingStatus.Content = text;
-                    
-                });
-               
-                
-            }
-            catch (Exception)
-            {
-            }
 
+                });
+
+
+            }
+            catch
+            {
+                // ignored
+            }
         }
 
         private async void TCSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            if (!rpfman.IsInited)
+
+            if (!RpfMan.IsInited)
             {
                 ExtractorControlsToggle(false);
                 if (TabControlMenu != null)
                 {
                     if (File.Exists("config.ini"))
                     {
-                        gtavpath = File.ReadAllLines("config.ini")[0].Split("=")[1];
+                        GTAVPath = (await File.ReadAllLinesAsync("config.ini"))[0].Split("=")[1];
                     }
                     else
                     {
@@ -384,6 +321,7 @@ namespace ArbolitoAva
                                      CanResize = false,
                                      Icon = MessageBox.Avalonia.Enums.Icon.Setting,
                                      ShowInCenter = true,
+                                     SystemDecorations = SystemDecorations.None,
                                      WindowStartupLocation = WindowStartupLocation.CenterOwner,
                                      ContentMessage = "Select your GTAV folder.",
                                  });
@@ -393,25 +331,19 @@ namespace ArbolitoAva
                         if (buttonResult == ButtonResult.Ok)
                         {
                             OpenFolderDialog ofd = new();
-                            string? selecteddir = await ofd.ShowAsync(this);
+                            var selecteddir = await ofd.ShowAsync(this);
                             StringBuilder sb = new();
-                            gtavpath = selecteddir;
-                            sb.AppendLine($"[GTAVPATH]={gtavpath}");
-                            File.WriteAllText("config.ini", sb.ToString().Trim());
+                            GTAVPath = selecteddir;
+                            sb.AppendLine($"[GTAVPATH]={GTAVPath}");
+                            await File.WriteAllTextAsync("config.ini", sb.ToString().Trim());
                         }
                     }
                 }
                 await Task.Run(() =>
                 {
-                    if (TabControlMenu != null)
-                    {
-                        if (TabControlMenu.SelectedIndex == 5)
-                        {
-                            GTA5Keys.LoadFromPath(gtavpath);
-                            rpfman.Init(gtavpath, UpdateStatus, UpdateStatus);
-                            
-                        }
-                    }
+                    if (TabControlMenu is not { SelectedIndex: 5 }) return;
+                    GTA5Keys.LoadFromPath(GTAVPath);
+                    RpfMan.Init(GTAVPath, UpdateStatus, UpdateStatus);
                 }).ConfigureAwait(false);
             }
             else
@@ -422,45 +354,40 @@ namespace ArbolitoAva
 
         private void ExtractorControlsToggle(bool toggle)
         {
-            if (TbExtractOutputPath != null && 
-                TbExtractSourcePath != null && 
-                BtnSelectOutputExtract != null && 
-                BtnSelectSourceExtract != null && 
-                checkBoxEnableMods != null &&
-                checkBoxEnableDLCs != null && 
-                BtnExtractFiles != null &&
-                CbExtractType != null)
+            if (TbExtractOutputPath == null ||
+                TbExtractSourcePath == null ||
+                BtnSelectOutputExtract == null ||
+                BtnSelectSourceExtract == null ||
+                checkBoxEnableMods == null ||
+                checkBoxEnableDLCs == null ||
+                BtnExtractFiles == null ||
+                CbExtractType == null) return;
+            TbExtractOutputPath.IsEnabled = toggle;
+            TbExtractSourcePath.IsEnabled = toggle;
+            BtnSelectOutputExtract.IsEnabled = toggle;
+            BtnSelectSourceExtract.IsEnabled = toggle;
+            checkBoxEnableMods.IsEnabled = toggle;
+            checkBoxEnableDLCs.IsEnabled = toggle;
+            BtnExtractFiles.IsEnabled = toggle;
+            CbExtractType.IsEnabled = toggle;
+            checkBoxExtractAsXml.IsEnabled = toggle;
+        }
+
+        private void LbGTALoadingChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+        {
+            if (LbGTALoadingStatus == null) return;
+            if ((string)LbGTALoadingStatus.Content == "Scan complete")
             {
-                TbExtractOutputPath.IsEnabled = toggle;
-                TbExtractSourcePath.IsEnabled = toggle;
-                BtnSelectOutputExtract.IsEnabled = toggle;
-                BtnSelectSourceExtract.IsEnabled = toggle;
-                checkBoxEnableMods.IsEnabled = toggle;
-                checkBoxEnableDLCs.IsEnabled = toggle;
-                BtnExtractFiles.IsEnabled = toggle;
-                CbExtractType.IsEnabled = toggle;
+                ExtractorControlsToggle(true);
             }
-            
 
         }
         
-        private async void LbGTALoadingChanged(object sender, AvaloniaPropertyChangedEventArgs e)
-        {
-            if(LbGTALoadingStatus != null)
-            {
-                if (LbGTALoadingStatus.Content == "Scan complete")
-                {
-                    ExtractorControlsToggle(true);
-                }
-            }
-            
-        }
-
         private async void BtnSelectOutputExtractClick(object sender, RoutedEventArgs e)
         {
             OpenFolderDialog ofd = new();
 
-            string? selecteddir = await ofd.ShowAsync(this);
+            var selecteddir = await ofd.ShowAsync(this);
             if (Directory.Exists(selecteddir))
             {
                 TbExtractOutputPath.Text = selecteddir;
@@ -472,7 +399,7 @@ namespace ArbolitoAva
         private async void BtnSelectSourceExtractClick(object sender, RoutedEventArgs e)
         {
 
-            if(CbExtractType != null)
+            if (CbExtractType != null)
             {
 
                 switch (CbExtractType.SelectedIndex)
@@ -518,7 +445,7 @@ namespace ArbolitoAva
 
                                 var buttonresult = await msBoxSourceStatus2.ShowDialog(this);
 
-                                if(buttonresult == ButtonResult.Ok)
+                                if (buttonresult == ButtonResult.Ok)
                                 {
                                     TbExtractSourcePath.Text = String.Empty;
                                 }
@@ -548,12 +475,12 @@ namespace ArbolitoAva
                                      WindowStartupLocation = WindowStartupLocation.CenterOwner,
                                      ContentMessage = "No YTYP(s) have been detected, select another folder.",
                                  });
-                                
+
                                 var buttonresult = await msBoxSourceStatus2.ShowDialog(this);
 
                                 if (buttonresult == ButtonResult.Ok)
                                 {
-                                    TbExtractSourcePath.Text = String.Empty;
+                                    TbExtractSourcePath.Text = string.Empty;
                                 }
                             }
                         }
@@ -564,15 +491,15 @@ namespace ArbolitoAva
             }
 
 
-            
+
 
         }
 
-        private async void CbExtractTypeChanged(object sender, SelectionChangedEventArgs e)
+        private void CbExtractTypeChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CbExtractType != null)
+            if (CbExtractType != null)
             {
-                TbExtractSourcePath.Text = String.Empty;
+                TbExtractSourcePath.Text = string.Empty;
 
             }
         }
@@ -586,18 +513,18 @@ namespace ArbolitoAva
                 {
                     case 1:
 
-                        string[] YmapFolder = Directory.GetFiles(TbExtractSourcePath.Text, "*.ymap");
+                        var ymapFolder = Directory.GetFiles(TbExtractSourcePath.Text, "*.ymap");
 
-                        foreach (var YmapFile in YmapFolder)
+                        foreach (var ymapFile in ymapFolder)
                         {
                             YmapFile yf = new();
-                            yf.Load(File.ReadAllBytes(YmapFile));
-                            
+                            yf.Load(await File.ReadAllBytesAsync(ymapFile));
 
-                            ExportFilesFromFiles(yf, TbExtractOutputPath.Text, (bool)checkBoxEnableMods.IsChecked, (bool)checkBoxEnableDLCs.IsChecked);
-                            
+
+                            ExportFilesFromFiles(yf, TbExtractOutputPath.Text, (bool)checkBoxEnableMods.IsChecked, (bool)checkBoxExtractAsXml.IsChecked, (bool)checkBoxExtractAsXml.IsChecked);
+
                         }
-                        
+
                         var msBoxSourceStatus = MessageBoxManager
                                  .GetMessageBoxStandardWindow(new MessageBoxStandardParams
                                  {
@@ -610,13 +537,37 @@ namespace ArbolitoAva
                                      ContentMessage = "Assets from YMAP(s) have been extracted successfully.",
                                  });
 
-                        msBoxSourceStatus.ShowDialog(this);
+                        await msBoxSourceStatus.ShowDialog(this);
                         ExtractorControlsToggle(true);
 
 
 
                         break;
-                    default:
+                    case 2:
+                        var YtypFiles = Directory.GetFiles(TbExtractSourcePath.Text, "*.ytyp");
+
+                        foreach (var YtypFile in YtypFiles)
+                        {
+                            YtypFile ytf = new();
+                            ytf.Load(await File.ReadAllBytesAsync(YtypFile));
+                            ExportFilesFromFiles(ytf, TbExtractOutputPath.Text, (bool)checkBoxEnableMods.IsChecked, (bool)checkBoxEnableDLCs.IsChecked, (bool)checkBoxExtractAsXml.IsChecked);
+                        }
+
+                        var msBoxSourceStatus2 = MessageBoxManager
+                                 .GetMessageBoxStandardWindow(new MessageBoxStandardParams
+                                 {
+                                     ButtonDefinitions = ButtonEnum.Ok,
+                                     ContentTitle = "Success",
+                                     CanResize = false,
+                                     Icon = MessageBox.Avalonia.Enums.Icon.Info,
+                                     ShowInCenter = true,
+                                     WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                                     ContentMessage = "Assets from YTYP(s) have been extracted successfully.",
+                                 });
+
+                        await msBoxSourceStatus2.ShowDialog(this);
+                        ExtractorControlsToggle(true);
+
                         break;
                 }
             }
@@ -639,26 +590,23 @@ namespace ArbolitoAva
 
                     if (buttonresult == ButtonResult.Ok)
                     {
-                        return;
                     }
                 }
             }
-                
+
         }
 
-        public void ExportFilesFromFiles(YmapFile yf, string output, bool mods, bool dlc)
+        public void ExportFilesFromFiles(YmapFile yf, string output, bool mods, bool dlc, bool asxml)
         {
+
             List<RpfFile> rpfFiles = new();
             List<string> ymapEntitiesStrings = new();
             string ymapName = JenkIndex.GetString(yf._CMapData.name);
 
-            RpfManager r = new();
-            r.Init(gtavpath, UpdateStatus, UpdateStatus);
-
-            if (mods && dlc) { rpfFiles = r.AllRpfs; }
-            else if (!mods && dlc) { rpfFiles = r.AllNoModRpfs; }
-            else if (mods && !dlc) { rpfFiles.AddRange(r.ModRpfs); rpfFiles.AddRange(r.BaseRpfs); }
-            else { rpfFiles = r.BaseRpfs; }
+            if (mods && dlc) { rpfFiles = RpfMan.AllRpfs; }
+            else if (!mods && dlc) { rpfFiles = RpfMan.AllNoModRpfs; }
+            else if (mods && !dlc) { rpfFiles.AddRange(RpfMan.ModRpfs); rpfFiles.AddRange(RpfMan.BaseRpfs); }
+            else { rpfFiles = RpfMan.BaseRpfs; }
 
             foreach (var item in yf.AllEntities)
             {
@@ -676,19 +624,30 @@ namespace ArbolitoAva
 
                     foreach (var x in ymapEntitiesStrings)
                     {
-                        if (entry.Name.Contains(x + "."))
-                        {
-                            var fentry = entry as RpfFileEntry;
-                            RpfResourceFileEntry rrfe = fentry as RpfResourceFileEntry;
-                            byte[] data = entry.File.ExtractFile(fentry);
+                        if (!entry.Name.Contains(x + ".")) continue;
+                        var fentry = entry as RpfFileEntry;
+                        RpfResourceFileEntry rrfe = fentry as RpfResourceFileEntry;
+                        var data = entry.File.ExtractFile(fentry);
 
-                            if (rrfe != null)
+                        if (rrfe != null)
+                        {
+                            data = ResourceBuilder.AddResourceHeader(rrfe, data);
+                        }
+
+                        if (!asxml)
+                        {
+                            File.WriteAllBytes(Path.Combine(output, ymapName, entry.NameLower), data);
+                        }
+                        else
+                        {
+                            string newfn;
+                            var xml = MetaXml.GetXml(fentry, fentry.File?.ExtractFile(fentry), out newfn, Path.Combine(output, ymapName));
+                            if (string.IsNullOrEmpty(xml))
                             {
-                                data = ResourceBuilder.AddResourceHeader(rrfe, data);
+                                return;
                             }
 
-
-                            File.WriteAllBytes(Path.Combine(output, ymapName, entry.Name), data);
+                            File.WriteAllText(Path.Combine(output, ymapName, entry.NameLower + ".xml"), xml);
                         }
                     }
                 }
@@ -697,99 +656,130 @@ namespace ArbolitoAva
 
         }
 
-        public bool ExportFilesFromFiles(YtypFile ytf, string output, bool mods, bool dlc)
+        public void ExportFilesFromFiles(YtypFile ytf, string output, bool mods, bool dlc, bool asxml)
         {
             List<RpfFile> rpfFiles = new();
 
-            List<uint> AllYTYPHashes = new();
-            List<uint> YtypMloEntitiesHashes = new();
-            List<uint> YtypArchetypesHashes = new();
-            bool Success = false;
+            List<string> AllYTYPHashes = new();
+            List<string> YtypMloEntitiesHashes = new();
+            var ytypName = JenkIndex.GetString(ytf._CMapTypes.name);
 
 
-            if (mods && dlc) { rpfFiles = rpfman.AllRpfs; }
-            else if (!mods && dlc) { rpfFiles = rpfman.AllNoModRpfs; }
-            else if (mods && !dlc) { rpfFiles.AddRange(rpfman.ModRpfs); rpfFiles.AddRange(rpfman.BaseRpfs); }
-            else { rpfFiles = rpfman.BaseRpfs; }
+            switch (mods)
+            {
+                case true when dlc:
+                    rpfFiles = RpfMan.AllRpfs;
+                    break;
+                case false when dlc:
+                    rpfFiles = RpfMan.AllNoModRpfs;
+                    break;
+                case true when !dlc:
+                    rpfFiles.AddRange(RpfMan.ModRpfs); rpfFiles.AddRange(RpfMan.BaseRpfs);
+                    break;
+                default:
+                    rpfFiles = RpfMan.BaseRpfs;
+                    break;
+            }
 
-            YtypArchetypesHashes = (from item in ytf.AllArchetypes
-                                    let newhash = item._BaseArchetypeDef.assetName.Hash
-                                    select newhash).ToList();
 
-            Directory.CreateDirectory(Path.Combine(output, ytf.Name));
+            var YtypArchetypesHashes = ytf.AllArchetypes.Select(item => JenkIndex.GetString(item._BaseArchetypeDef.assetName)).ToList();
 
-            int MLOArchetypeCount = ytf.AllArchetypes.Where(x => x.Type == MetaName.CMloArchetypeDef).Count();
+            Directory.CreateDirectory(Path.Combine(output, ytypName));
+
+            int MLOArchetypeCount = ytf.AllArchetypes.Count(x => x.Type == MetaName.CMloArchetypeDef);
 
             if (MLOArchetypeCount > 0)
             {
-                Directory.CreateDirectory(Path.Combine(output, ytf.Name, "MLO entities"));
-
-                foreach (var item in ytf.AllArchetypes)
-                {
-                    if (item.Type == MetaName.CMloArchetypeDef)
-                    {
-                        MloArchetype? mloarch = item as MloArchetype;
-                        foreach (var mloentity in mloarch.entities)
-                        {
-                            YtypMloEntitiesHashes.Add(mloentity._Data.archetypeName.Hash);
-                        }
-                    }
-                }
-
+                Directory.CreateDirectory(Path.Combine(output, ytypName, "MLO entities"));
+                YtypMloEntitiesHashes.AddRange(from item in ytf.AllArchetypes where item.Type == MetaName.CMloArchetypeDef select item as MloArchetype into mloarch from mloentity in mloarch.entities select JenkIndex.GetString(mloentity._Data.archetypeName));
                 YtypMloEntitiesHashes = YtypMloEntitiesHashes.Distinct().ToList();
             }
 
             AllYTYPHashes = AllYTYPHashes.Concat(YtypArchetypesHashes).Concat(YtypMloEntitiesHashes).Distinct().ToList();
 
 
-            foreach (RpfFile rpffile in rpfFiles)
+            foreach (var rpffile in rpfFiles)
             {
-                foreach (RpfEntry entry in rpffile.AllEntries)
+                foreach (var entry in rpffile.AllEntries)
                 {
-                    AllYTYPHashes.ForEach(x =>
+                    foreach (var x in AllYTYPHashes)
                     {
-                        if (entry.NameHash == x)
+                        if (!entry.Name.Contains(x + ".")) continue;
+                        var fentry = entry as RpfFileEntry;
+                        var data = entry.File.ExtractFile(fentry);
+
+                        if (fentry is RpfResourceFileEntry rfentry)
                         {
-                            var fentry = entry as RpfFileEntry;
-                            byte[] data = entry.File.ExtractFile(fentry);
+                            data = ResourceBuilder.AddResourceHeader(rfentry, data);
+                        }
 
-                            if (fentry is RpfResourceFileEntry rfentry)
+                        if (YtypMloEntitiesHashes.Contains(x))
+                        {
+                            if (!asxml)
                             {
-                                data = ResourceBuilder.AddResourceHeader(rfentry, data);
-                            }
-
-                            if (YtypMloEntitiesHashes.Contains(x))
-                            {
-                                File.WriteAllBytes(Path.Combine(output, ytf.Name, "MLO entities", entry.Name), data);
-                                Success = true;
+                                File.WriteAllBytes(Path.Combine(output, ytypName, "MLO entities", entry.NameLower), data);
 
                             }
                             else
                             {
-                                File.WriteAllBytes(Path.Combine(output, ytf.Name, entry.Name), data);
-                                Success = true;
+                                string newfn;
+                                var xml = MetaXml.GetXml(fentry, fentry.File?.ExtractFile(fentry), out newfn, Path.Combine(output, ytypName, "MLO entities"));
+                                if (string.IsNullOrEmpty(xml))
+                                {
+                                    return;
+                                }
 
+                                File.WriteAllText(Path.Combine(output, ytypName, "MLO entities", entry.NameLower + ".xml"), xml);
                             }
 
                         }
-                    });
+                        else
+                        {
+                            if (!asxml)
+                            {
+                                File.WriteAllBytes(Path.Combine(output, ytypName, entry.NameLower), data);
+
+                            }
+                            else
+                            {
+                                string newfn;
+                                var xml = MetaXml.GetXml(fentry, fentry.File?.ExtractFile(fentry), out newfn, Path.Combine(output, ytypName));
+                                if (string.IsNullOrEmpty(xml))
+                                {
+                                    return;
+                                }
+
+                                File.WriteAllText(Path.Combine(output, ytypName, entry.NameLower + ".xml"), xml);
+                            }
+
+                        }
+                    }
                 }
             }
 
-            return Success;
 
         }
 
-        public bool ExportFilesFromFiles(string filename, string output, bool mods, bool dlc)
+        public void ExportFilesFromFiles(string filename, string output, bool mods, bool dlc, bool asxml)
         {
             List<RpfFile> rpfFiles = new();
 
-            bool Success = false;
 
-            if (mods && dlc) { rpfFiles = rpfman.AllRpfs; }
-            else if (!mods && dlc) { rpfFiles = rpfman.AllNoModRpfs; }
-            else if (mods && !dlc) { rpfFiles.AddRange(rpfman.ModRpfs); rpfFiles.AddRange(rpfman.BaseRpfs); }
-            else { rpfFiles = rpfman.BaseRpfs; }
+            switch (mods)
+            {
+                case true when dlc:
+                    rpfFiles = RpfMan.AllRpfs;
+                    break;
+                case false when dlc:
+                    rpfFiles = RpfMan.AllNoModRpfs;
+                    break;
+                case true when !dlc:
+                    rpfFiles.AddRange(RpfMan.ModRpfs); rpfFiles.AddRange(RpfMan.BaseRpfs);
+                    break;
+                default:
+                    rpfFiles = RpfMan.BaseRpfs;
+                    break;
+            }
 
             var textEntitiesHashes = (from item in File.ReadAllLines(filename)
                                       let newhash = JenkHash.GenHash(item)
@@ -797,34 +787,29 @@ namespace ArbolitoAva
 
 
             Directory.CreateDirectory(Path.Combine(output, Path.GetFileNameWithoutExtension(filename)));
-
-            foreach (RpfFile rpfFile in rpfFiles)
+            
+            foreach (var rpfFile in rpfFiles)
             {
-                foreach (RpfEntry entry in rpfFile.AllEntries)
+                foreach (var entry in rpfFile.AllEntries)
                 {
 
                     foreach (var x in textEntitiesHashes)
                     {
-                        if (entry.NameHash == x)
+                        if (entry.NameHash != x) continue;
+                        var fentry = entry as RpfFileEntry;
+                        var data = entry.File.ExtractFile(fentry);
+
+                        if (fentry is RpfResourceFileEntry rfentry)
                         {
-                            var fentry = entry as RpfFileEntry;
-                            byte[] data = entry.File.ExtractFile(fentry);
-
-                            if (fentry is RpfResourceFileEntry rfentry)
-                            {
-                                data = ResourceBuilder.AddResourceHeader(rfentry, data);
-                            }
-
-                            File.WriteAllBytes(Path.Combine(output, Path.GetFileNameWithoutExtension(filename), entry.Name), data);
-                            Success = true;
-
+                            data = ResourceBuilder.AddResourceHeader(rfentry, data);
                         }
+
+                        File.WriteAllBytes(Path.Combine(output, Path.GetFileNameWithoutExtension(filename), entry.Name), data);
                     }
 
                 }
             }
 
-            return Success;
 
 
         }

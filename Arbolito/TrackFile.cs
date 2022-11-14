@@ -16,8 +16,10 @@ namespace YmapPropSplitter
         {
 
             List<TrackNode> tftn = new();
-            
-            string[] tracklines = File.ReadAllLines(filename);
+
+            string[] tracklines = File.ReadAllLines(filename).ToList().Select(x => { x = x.TrimEnd(); return x; }).ToArray();
+
+
 
             foreach (var item in tracklines)
             {

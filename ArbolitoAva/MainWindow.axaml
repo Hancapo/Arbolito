@@ -4,7 +4,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
 		Width="1280" Height="720"
-		xmlns:dialogHost="clr-namespace:DialogHost;assembly=DialogHost.Avalonia"
 		CanResize="False"
         x:Class="ArbolitoAva.MainWindow"
 		Background="#121212"
@@ -131,7 +130,7 @@
 				</TabItem.Header>
 				<StackPanel VerticalAlignment="Center">
 					<Grid>
-						<Grid RowDefinitions="70,70,70,70,70">
+						<Grid RowDefinitions="70,70,70,70,70,70">
 							<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 								<Label Content="Extract by" VerticalContentAlignment="Center" Margin="0,0,10,0"/>
 								<ComboBox SelectionChanged="CbExtractTypeChanged" x:Name="CbExtractType" SelectedIndex="0" Width="230">
@@ -152,11 +151,15 @@
 							</StackPanel>
 							<StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="100" VerticalAlignment="Center" HorizontalAlignment="Center">
 								<CheckBox x:Name="checkBoxEnableMods">Enable Mods</CheckBox>
-								<Button Click="BtnExtractFilesClick" x:Name="BtnExtractFiles" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" Width="200" Height="60" Content="🗃️" Margin="10,0,0,0"/>
+								<CheckBox x:Name="checkBoxExtractAsXml">Extract as XML</CheckBox>
+
 								<CheckBox x:Name="checkBoxEnableDLCs">Enable DLCs</CheckBox>
+							</StackPanel>
+							<StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+								<Button Click="BtnExtractFilesClick" x:Name="BtnExtractFiles" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="30" Width="200" Height="60" Content="🗃️" Margin="10,0,0,0"/>
 
 							</StackPanel>
-							<StackPanel Grid.Row="4" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+							<StackPanel Grid.Row="5" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center" HorizontalAlignment="Center">
 								<Label PropertyChanged="LbGTALoadingChanged" x:Name="LbGTALoadingStatus" Content="Loading GTA 5...."/>
 							</StackPanel>
 						</Grid>
